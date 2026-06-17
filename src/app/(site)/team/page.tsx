@@ -1,0 +1,21 @@
+import type { Metadata } from "next";
+import { PageHero } from "@/components/layout/PageHero";
+import { TeamContent } from "@/components/sections/TeamContent";
+
+export const metadata: Metadata = {
+  title: "Meet the Team — Brisavo",
+  description: "Meet the engineering, product, and design leaders powering Brisavo's global technology delivery.",
+};
+
+export default function TeamPage() {
+  return (
+    <>
+      <PageHero
+        label="Our Team"
+        title="Meet The People Behind Brisavo"
+        description="Elite engineers, designers, and strategists united by a mission to build world-class technology for businesses worldwide."
+      />
+      <TeamContent />
+    </>
+  );
+}
