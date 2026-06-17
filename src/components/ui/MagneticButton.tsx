@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 interface MagneticButtonProps {
   children: React.ReactNode;
-  className?: string;
+  className?: string; 
   variant?: "primary" | "secondary" | "ghost";
   href?: string;
   onClick?: () => void;
