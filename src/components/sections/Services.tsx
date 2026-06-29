@@ -67,7 +67,7 @@ function ServiceCard({
       style={{ rotateX, rotateY, transformPerspective: 1000 }}
       className={cn(
         "group relative rounded-2xl p-6 md:p-8 overflow-hidden cursor-default",
-        "glass border border-white/5 hover:border-white/10 transition-colors duration-500",
+        "glass border border-border hover:border-border transition-colors duration-500",
         service.span
       )}
     >

@@ -9,7 +9,7 @@ import { MapPin, Clock, Radio } from "lucide-react";
 
 const GlobeScene = dynamic(
   () => import("@/components/three/Globe").then((m) => m.Globe),
-  { ssr: false, loading: () => <div className="w-full h-full min-h-[400px] animate-pulse bg-white/5 rounded-3xl" /> }
+  { ssr: false, loading: () => <div className="w-full h-full min-h-[400px] animate-pulse bg-surface rounded-3xl" /> }
 );
 
 export function GlobalPresence({ showHeader = true }: { showHeader?: boolean }) {
@@ -49,7 +49,7 @@ export function GlobalPresence({ showHeader = true }: { showHeader?: boolean }) 
               <BlurReveal key={office.country} delay={i * 0.15}>
                 <motion.div
                   whileHover={{ x: 8 }}
-                  className="glass rounded-2xl p-6 md:p-8 group cursor-default border border-white/5 hover:border-white/10 transition-all duration-500"
+                  className="glass rounded-2xl p-6 md:p-8 group cursor-default border border-border hover:border-border transition-all duration-500"
                 >
                   <div className="flex items-start gap-4">
                     <div className="text-4xl">{office.flag}</div>
@@ -68,7 +68,7 @@ export function GlobalPresence({ showHeader = true }: { showHeader?: boolean }) 
                         </span>
                         <a
                           href={office.phoneHref}
-                          className="flex items-center gap-1.5 hover:text-white transition-colors"
+                          className="flex items-center gap-1.5 hover:text-foreground transition-colors"
                         >
                           {office.phone}
                         </a>
@@ -80,8 +80,8 @@ export function GlobalPresence({ showHeader = true }: { showHeader?: boolean }) 
                     </div>
                   </div>
 
-                  <div className="mt-4 h-px bg-gradient-to-r from-white/10 via-white/5 to-transparent" />
-                  <div className="mt-4 flex items-center gap-2 text-xs font-mono text-white/40 group-hover:text-white/60 transition-colors">
+                  <div className="mt-4 h-px bg-gradient-to-r from-border via-border to-transparent" />
+                  <div className="mt-4 flex items-center gap-2 text-xs font-mono text-foreground/40 group-hover:text-foreground/60 transition-colors">
                     <motion.div
                       className="w-2 h-2 rounded-full bg-green-400"
                       animate={{ scale: [1, 1.3, 1] }}

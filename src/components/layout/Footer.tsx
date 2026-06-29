@@ -7,7 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-white/5">
+    <footer className="relative overflow-hidden border-t border-border">
       <div className="absolute inset-0">
         <div className="absolute bottom-0 left-1/4 w-[400px] h-[200px] bg-accent-blue/5 blur-[100px]" />
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[200px] bg-accent-violet/5 blur-[100px]" />
@@ -33,7 +33,7 @@ export function Footer() {
                 <a
                   key={phone.href}
                   href={phone.href}
-                  className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
+                  className="flex items-center gap-2 text-sm text-foreground/60 hover:text-foreground transition-colors"
                 >
                   <span>{phone.flag}</span>
                   <span>{phone.number}</span>
@@ -56,7 +56,7 @@ export function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-white/50 hover:text-white transition-colors inline-flex items-center gap-1 group"
+                      className="text-sm text-foreground/50 hover:text-foreground transition-colors inline-flex items-center gap-1 group"
                     >
                       {link.label}
                       <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -68,7 +68,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8" />
+        <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent mb-8" />
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted">
@@ -76,13 +76,13 @@ export function Footer() {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
-            <Link href="/privacy" className="text-xs text-muted hover:text-white transition-colors">
+            <Link href="/privacy" className="text-xs text-muted hover:text-foreground transition-colors">
               Privacy
             </Link>
-            <Link href="/terms" className="text-xs text-muted hover:text-white transition-colors">
+            <Link href="/terms" className="text-xs text-muted hover:text-foreground transition-colors">
               Terms
             </Link>
-            <Link href="/contact" className="text-xs text-muted hover:text-white transition-colors">
+            <Link href="/contact" className="text-xs text-muted hover:text-foreground transition-colors">
               Contact
             </Link>
           </div>
@@ -105,7 +105,7 @@ export function Footer() {
             {Array.from({ length: 4 }).map((_, i) => (
               <span
                 key={i}
-                className="text-[8vw] md:text-[6vw] font-bold text-white/[0.03] mx-8 select-none"
+                className="text-[8vw] md:text-[6vw] font-bold text-foreground/[0.03] mx-8 select-none"
               >
                 BRISAVO
               </span>

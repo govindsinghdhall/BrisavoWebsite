@@ -15,7 +15,7 @@ export default function HomePage() {
     <>
       <Hero />
       <HomeOverview />
-      <Credibility showHeader={false} />
+      <Credibility showHeader={false} compact />
       <Testimonials />
     </>
   );

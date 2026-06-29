@@ -15,7 +15,7 @@ export function TeamContent() {
             <BlurReveal key={member.name} delay={i * 0.08}>
               <motion.div
                 whileHover={{ y: -4 }}
-                className="glass rounded-2xl p-8 border border-white/5 hover:border-white/10 transition-all duration-500 h-full flex flex-col"
+                className="glass rounded-2xl p-8 border border-border hover:border-border transition-all duration-500 h-full flex flex-col"
               >
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent-blue to-accent-violet flex items-center justify-center text-lg font-bold mb-6">
                   {member.avatar}
@@ -40,7 +40,7 @@ export function TeamContent() {
             <p className="text-muted mb-6">Want to connect with our leadership?</p>
             <Link
               href="/founders-office"
-              className="inline-flex items-center gap-2 glass rounded-full px-6 py-3 text-sm font-medium hover:bg-white/10 transition-colors group"
+              className="inline-flex items-center gap-2 glass rounded-full px-6 py-3 text-sm font-medium hover:bg-surface-hover transition-colors group"
             >
               Visit Founders Office
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

@@ -5,6 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { METRICS, TIMELINE } from "@/lib/data";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { BlurReveal } from "@/components/animations/TextReveal";
+import { cn } from "@/lib/utils";
 
 function AnimatedCounter({
   value,
@@ -40,9 +41,20 @@ function AnimatedCounter({
   );
 }
 
-export function Credibility({ showHeader = true }: { showHeader?: boolean }) {
+export function Credibility({
+  showHeader = true,
+  compact = false,
+}: {
+  showHeader?: boolean;
+  compact?: boolean;
+}) {
   return (
-    <section className="section-padding relative overflow-hidden">
+    <section
+      className={cn(
+        "section-padding relative overflow-hidden",
+        compact && "!py-16 md:!py-20"
+      )}
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent-violet/[0.03] to-transparent" />
 
       <div className="container-wide relative">
@@ -55,14 +67,22 @@ export function Credibility({ showHeader = true }: { showHeader?: boolean }) {
           />
         )}
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-24">
+        <div className={cn("grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5", compact ? "mb-14" : "mb-24")}>
           {METRICS.map((metric, i) => (
             <BlurReveal key={metric.label} delay={i * 0.1}>
               <motion.div
                 whileHover={{ y: -4 }}
-                className="glass rounded-2xl p-6 md:p-8 text-center group cursor-default border border-white/5 hover:border-white/10 transition-all duration-500"
+                className={cn(
+                  "glass rounded-2xl text-center group cursor-default border border-border hover:border-border transition-all duration-500",
+                  compact ? "p-5 md:p-6" : "p-6 md:p-8"
+                )}
               >
-                <div className="text-3xl md:text-5xl font-semibold text-gradient-accent mb-2">
+                <div
+                  className={cn(
+                    "font-semibold text-gradient-accent mb-2",
+                    compact ? "text-2xl md:text-4xl" : "text-3xl md:text-5xl"
+                  )}
+                >
                   <AnimatedCounter
                     value={metric.value}
                     suffix={metric.suffix}
@@ -77,13 +97,15 @@ export function Credibility({ showHeader = true }: { showHeader?: boolean }) {
         </div>
 
         <BlurReveal>
-          <h3 className="text-2xl font-semibold text-center mb-12">Our Journey</h3>
+          <h3 className={cn("font-semibold text-center", compact ? "text-xl mb-8" : "text-2xl mb-12")}>
+            Our Journey
+          </h3>
         </BlurReveal>
 
         <div className="relative">
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent-blue/50 via-accent-violet/50 to-transparent md:-translate-x-px" />
 
-          <div className="space-y-12">
+          <div className={compact ? "space-y-8" : "space-y-12"}>
             {TIMELINE.map((item, i) => (
               <BlurReveal key={item.year} delay={i * 0.1}>
                 <motion.div

@@ -15,7 +15,7 @@ function ProductCard({ product, index }: { product: (typeof PRODUCTS)[number]; i
       transition={{ duration: 0.7, delay: index * 0.1 }}
       className="flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-[500px] lg:w-[600px] group"
     >
-      <div className="glass rounded-3xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-500 h-full">
+      <div className="glass rounded-3xl overflow-hidden border border-border hover:border-border transition-all duration-500 h-full">
         <div
           className="h-48 md:h-64 relative overflow-hidden"
           style={{ background: `linear-gradient(135deg, ${product.color}15, transparent)` }}
@@ -24,16 +24,16 @@ function ProductCard({ product, index }: { product: (typeof PRODUCTS)[number]; i
             <div className="w-[80%] h-[70%] rounded-xl glass-strong p-4 transform group-hover:scale-[1.02] transition-transform duration-700">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-3 h-3 rounded-full" style={{ backgroundColor: product.color }} />
-                <div className="h-2 w-24 rounded-full bg-white/10" />
+                <div className="h-2 w-24 rounded-full bg-surface-hover" />
               </div>
               <div className="space-y-2">
-                <div className="h-2 w-full rounded-full bg-white/5" />
-                <div className="h-2 w-3/4 rounded-full bg-white/5" />
-                <div className="h-2 w-1/2 rounded-full bg-white/5" />
+                <div className="h-2 w-full rounded-full bg-surface" />
+                <div className="h-2 w-3/4 rounded-full bg-surface" />
+                <div className="h-2 w-1/2 rounded-full bg-surface" />
               </div>
               <div className="mt-4 grid grid-cols-3 gap-2">
                 {[1, 2, 3].map((n) => (
-                  <div key={n} className="h-12 rounded-lg bg-white/5" />
+                  <div key={n} className="h-12 rounded-lg bg-surface" />
                 ))}
               </div>
             </div>
@@ -64,7 +64,7 @@ function ProductCard({ product, index }: { product: (typeof PRODUCTS)[number]; i
             {product.metrics.map((metric) => (
               <span
                 key={metric}
-                className="text-xs font-mono px-3 py-1.5 rounded-full glass text-white/60"
+                className="text-xs font-mono px-3 py-1.5 rounded-full glass text-foreground/60"
               >
                 {metric}
               </span>

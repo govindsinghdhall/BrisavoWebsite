@@ -38,10 +38,10 @@ export function MagneticButton({
 
   const variants = {
     primary:
-      "bg-white text-black hover:shadow-[0_0_40px_rgba(255,255,255,0.2)]",
+      "bg-gradient-to-r from-accent-blue via-accent-violet to-accent-cyan text-white hover:shadow-[0_0_40px_rgba(59,130,246,0.35)]",
     secondary:
-      "glass text-white hover:bg-white/10 hover:border-white/20",
-    ghost: "text-white/70 hover:text-white hover:bg-white/5",
+      "glass text-foreground hover:bg-surface-hover hover:border-glass-border",
+    ghost: "text-foreground/70 hover:text-foreground hover:bg-surface",
   };
 
   const content = (
@@ -59,10 +59,12 @@ export function MagneticButton({
       )}
       onClick={onClick}
     >
-      <span className="relative z-10">{children}</span>
+      <span className="relative z-10 inline-flex items-center justify-center gap-2 [&_svg]:shrink-0">
+        {children}
+      </span>
       {variant === "primary" && (
         <motion.div
-          className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/20 via-violet-500/20 to-cyan-500/20 opacity-0"
+          className="absolute inset-0 rounded-full bg-white/10 opacity-0"
           whileHover={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
         />

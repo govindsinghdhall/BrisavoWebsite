@@ -7,7 +7,7 @@ import { BlurReveal } from "@/components/animations/TextReveal";
 
 const TechGraphScene = dynamic(
   () => import("@/components/three/TechGraph").then((m) => m.TechGraph),
-  { ssr: false, loading: () => <div className="w-full h-full min-h-[500px] animate-pulse bg-white/5 rounded-3xl" /> }
+  { ssr: false, loading: () => <div className="w-full h-full min-h-[500px] animate-pulse bg-surface rounded-3xl" /> }
 );
 
 const CATEGORIES = [
@@ -50,7 +50,7 @@ export function TechUniverse({ showHeader = true }: { showHeader?: boolean }) {
                     <div className="font-medium text-sm">{cat.name}</div>
                     <div className="text-xs text-muted">{cat.count} technologies</div>
                   </div>
-                  <div className="ml-auto text-xs font-mono text-white/30 group-hover:text-white/60 transition-colors">
+                  <div className="ml-auto text-xs font-mono text-foreground/30 group-hover:text-foreground/60 transition-colors">
                     Active
                   </div>
                 </motion.div>
@@ -78,7 +78,7 @@ export function TechUniverse({ showHeader = true }: { showHeader?: boolean }) {
                     <div className="font-medium text-sm">{cat.name}</div>
                     <div className="text-xs text-muted">{cat.count} technologies</div>
                   </div>
-                  <div className="ml-auto text-xs font-mono text-white/30 group-hover:text-white/60 transition-colors">
+                  <div className="ml-auto text-xs font-mono text-foreground/30 group-hover:text-foreground/60 transition-colors">
                     Active
                   </div>
                 </motion.div>

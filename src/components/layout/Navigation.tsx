@@ -8,6 +8,7 @@ import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function Navigation() {
   const pathname = usePathname();
@@ -46,7 +47,7 @@ export function Navigation() {
           className={cn(
             "container-wide mx-auto flex items-center justify-between rounded-2xl px-6 py-3 transition-all duration-500",
             scrolled
-              ? "glass-strong shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+              ? "glass-strong shadow-[0_8px_32px_var(--nav-shadow)]"
               : "bg-transparent"
           )}
         >
@@ -67,7 +68,7 @@ export function Navigation() {
                 href={link.href}
                 className={cn(
                   "relative px-3 py-2 text-sm transition-colors group",
-                  isActive(link.href) ? "text-white" : "text-white/60 hover:text-white"
+                  isActive(link.href) ? "text-foreground" : "text-foreground/60 hover:text-foreground"
                 )}
               >
                 {link.label}
@@ -81,24 +82,28 @@ export function Navigation() {
             ))}
           </div>
 
-          <div className="hidden xl:block">
+          <div className="hidden xl:flex items-center gap-2">
+            <ThemeToggle />
             <MagneticButton href="/contact" variant="primary" className="!px-6 !py-2.5 !text-sm">
-              Start a Project
+              Request a Demo
             </MagneticButton>
           </div>
 
-          <button
-            className="xl:hidden relative w-10 h-10 flex items-center justify-center"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          >
-            <motion.div
-              animate={{ rotate: mobileOpen ? 90 : 0 }}
-              transition={{ duration: 0.3 }}
+          <div className="xl:hidden flex items-center gap-1">
+            <ThemeToggle />
+            <button
+              className="relative w-10 h-10 flex items-center justify-center"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
             >
-              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-            </motion.div>
-          </button>
+              <motion.div
+                animate={{ rotate: mobileOpen ? 90 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+              </motion.div>
+            </button>
+          </div>
         </nav>
       </header>
 
@@ -111,7 +116,7 @@ export function Navigation() {
             className="fixed inset-0 z-40 xl:hidden"
           >
             <motion.div
-              className="absolute inset-0 bg-black/80 backdrop-blur-xl"
+              className="absolute inset-0 bg-overlay backdrop-blur-xl"
               onClick={() => setMobileOpen(false)}
             />
             <motion.nav
@@ -132,8 +137,8 @@ export function Navigation() {
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
                     className={cn(
-                      "block text-xl font-medium py-3 border-b border-white/5 transition-colors",
-                      isActive(link.href) ? "text-white" : "text-white/80 hover:text-white"
+                      "block text-xl font-medium py-3 border-b border-border transition-colors",
+                      isActive(link.href) ? "text-foreground" : "text-foreground/80 hover:text-foreground"
                     )}
                   >
                     {link.label}
@@ -152,7 +157,7 @@ export function Navigation() {
                   className="w-full"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Start a Project
+                  Request a Demo
                 </MagneticButton>
               </motion.div>
             </motion.nav>

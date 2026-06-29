@@ -52,7 +52,7 @@ function StoryVisual({ blocks }: { blocks: number }) {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.05, duration: 0.4 }}
-            className="rounded-lg bg-white/5 border border-white/5"
+            className="rounded-lg bg-surface border border-border"
           />
         ))}
       </div>
@@ -87,7 +87,7 @@ export function ScrollStory() {
               className="grid md:grid-cols-2 gap-8 md:gap-16 items-center"
             >
               <div className={i % 2 === 1 ? "md:order-2" : ""}>
-                <span className="text-6xl md:text-8xl font-bold text-white/5 font-mono">
+                <span className="text-6xl md:text-8xl font-bold text-foreground/5 font-mono">
                   {step.phase}
                 </span>
                 <h3 className="text-2xl md:text-3xl font-semibold tracking-tight -mt-8 md:-mt-12 mb-4">

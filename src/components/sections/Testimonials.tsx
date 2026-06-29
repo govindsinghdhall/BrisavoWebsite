@@ -13,7 +13,7 @@ export function Testimonials() {
   const prev = () => setActive((p) => (p - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
 
   return (
-    <section className="section-padding relative overflow-hidden">
+    <section className="section-padding !py-16 md:!py-20 relative overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-accent-violet/5 blur-[200px] rounded-full" />
       </div>
@@ -24,6 +24,7 @@ export function Testimonials() {
           title="Voices Of Global Impact"
           description="Leaders worldwide trust Brisavo to engineer their most critical technology."
           align="center"
+          compact
         />
 
         <div className="relative max-w-4xl mx-auto">
@@ -34,11 +35,11 @@ export function Testimonials() {
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, y: -30, filter: "blur(10px)" }}
               transition={{ duration: 0.5 }}
-              className="glass rounded-3xl p-8 md:p-12 border border-white/5"
+              className="glass rounded-3xl p-6 md:p-9 border border-border"
             >
-              <Quote className="w-10 h-10 text-accent-blue/30 mb-6" />
+              <Quote className="w-8 h-8 text-accent-blue/30 mb-4" />
 
-              <p className="text-xl md:text-2xl font-light leading-relaxed mb-8 text-white/90">
+              <p className="text-lg md:text-xl font-light leading-relaxed mb-6 text-foreground/90">
                 &ldquo;{TESTIMONIALS[active].quote}&rdquo;
               </p>
 
@@ -65,7 +66,7 @@ export function Testimonials() {
           <div className="flex items-center justify-center gap-4 mt-8">
             <button
               onClick={prev}
-              className="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"
+              className="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-surface-hover transition-colors"
               aria-label="Previous testimonial"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -77,7 +78,7 @@ export function Testimonials() {
                   key={i}
                   onClick={() => setActive(i)}
                   className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === active ? "w-8 bg-accent-blue" : "w-1.5 bg-white/20"
+                    i === active ? "w-8 bg-accent-blue" : "w-1.5 bg-foreground/20"
                   }`}
                   aria-label={`Go to testimonial ${i + 1}`}
                 />
@@ -86,7 +87,7 @@ export function Testimonials() {
 
             <button
               onClick={next}
-              className="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"
+              className="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-surface-hover transition-colors"
               aria-label="Next testimonial"
             >
               <ChevronRight className="w-4 h-4" />
@@ -94,14 +95,14 @@ export function Testimonials() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-wrap justify-center gap-4">
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
           {TESTIMONIALS.map((t, i) => (
             <motion.button
               key={t.id}
               onClick={() => setActive(i)}
               whileHover={{ y: -4 }}
               className={`glass rounded-xl px-4 py-3 flex items-center gap-3 transition-all duration-300 ${
-                i === active ? "border-accent-blue/30 bg-accent-blue/5" : "border-white/5"
+                i === active ? "border-accent-blue/30 bg-accent-blue/5" : "border-border"
               }`}
             >
               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-accent-blue/50 to-accent-violet/50 flex items-center justify-center text-xs font-semibold">

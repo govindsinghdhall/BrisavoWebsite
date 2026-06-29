@@ -18,7 +18,7 @@ export function FoundersContent() {
             <BlurReveal key={founder.title} delay={i * 0.15}>
               <motion.div
                 whileHover={{ y: -4 }}
-                className="glass rounded-3xl p-8 md:p-10 border border-white/5 hover:border-white/10 transition-all duration-500 h-full"
+                className="glass rounded-3xl p-8 md:p-10 border border-border hover:border-border transition-all duration-500 h-full"
               >
                 <div className="flex items-start gap-6 mb-8">
                   <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-accent-blue to-accent-violet flex items-center justify-center text-xl font-bold shrink-0">
@@ -40,7 +40,7 @@ export function FoundersContent() {
                   {founder.focus.map((area) => (
                     <span
                       key={area}
-                      className="text-xs font-mono px-3 py-1.5 rounded-full glass text-white/60"
+                      className="text-xs font-mono px-3 py-1.5 rounded-full glass text-foreground/60"
                     >
                       {area}
                     </span>
@@ -61,7 +61,7 @@ export function FoundersContent() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
               <a
                 href={`mailto:${CONTACT.email}`}
-                className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
+                className="flex items-center gap-2 text-sm text-foreground/70 hover:text-foreground transition-colors"
               >
                 <Mail className="w-4 h-4 text-accent-blue" />
                 {CONTACT.email}
@@ -70,7 +70,7 @@ export function FoundersContent() {
                 <a
                   key={phone.href}
                   href={phone.href}
-                  className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
+                  className="flex items-center gap-2 text-sm text-foreground/70 hover:text-foreground transition-colors"
                 >
                   <Phone className="w-4 h-4 text-accent-blue" />
                   {phone.flag} {phone.number}
@@ -84,7 +84,7 @@ export function FoundersContent() {
               </MagneticButton>
               <Link
                 href="/team"
-                className="inline-flex items-center gap-2 text-sm text-muted hover:text-white transition-colors group"
+                className="inline-flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors group"
               >
                 Meet the Full Team
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

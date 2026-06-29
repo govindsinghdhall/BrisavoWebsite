@@ -25,7 +25,7 @@ export function WhyUsContent() {
               <BlurReveal key={item.title} delay={i * 0.08}>
                 <motion.div
                   whileHover={{ y: -4 }}
-                  className="glass rounded-2xl p-8 border border-white/5 hover:border-white/10 transition-all duration-500 h-full"
+                  className="glass rounded-2xl p-8 border border-border hover:border-border transition-all duration-500 h-full"
                 >
                   <div className="w-12 h-12 rounded-xl bg-accent-violet/10 flex items-center justify-center mb-6">
                     <Icon className="w-6 h-6 text-accent-violet" />

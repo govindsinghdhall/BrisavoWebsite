@@ -120,7 +120,7 @@ export function Contact({ showHeader = true }: { showHeader?: boolean }) {
                   <p className="text-muted">Our team will respond within 24 hours.</p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="glass rounded-2xl p-6 md:p-8 border border-white/5 space-y-5">
+                <form onSubmit={handleSubmit} className="glass rounded-2xl p-6 md:p-8 border border-border space-y-5">
                   {fields.map((field) => (
                     <div key={field.id}>
                       <label htmlFor={field.id} className="text-xs font-mono uppercase tracking-wider text-muted mb-2 block">
@@ -138,10 +138,10 @@ export function Contact({ showHeader = true }: { showHeader?: boolean }) {
                           onFocus={() => setFocused(field.id)}
                           onBlur={() => setFocused(null)}
                           className={cn(
-                            "w-full bg-white/5 border rounded-xl px-4 py-3 text-sm outline-none transition-all duration-300",
+                            "w-full bg-surface border rounded-xl px-4 py-3 text-sm outline-none transition-all duration-300",
                             focused === field.id
-                              ? "border-accent-blue/50 bg-white/8 shadow-[0_0_20px_rgba(59,130,246,0.1)]"
-                              : "border-white/10 hover:border-white/20",
+                              ? "border-accent-blue/50 bg-surface shadow-[0_0_20px_rgba(59,130,246,0.1)]"
+                              : "border-border hover:border-glass-border",
                             errors[field.id] && "border-red-500/50"
                           )}
                         />
@@ -171,10 +171,10 @@ export function Contact({ showHeader = true }: { showHeader?: boolean }) {
                       onFocus={() => setFocused("message")}
                       onBlur={() => setFocused(null)}
                       className={cn(
-                        "w-full bg-white/5 border rounded-xl px-4 py-3 text-sm outline-none transition-all duration-300 resize-none",
+                        "w-full bg-surface border rounded-xl px-4 py-3 text-sm outline-none transition-all duration-300 resize-none",
                         focused === "message"
-                          ? "border-accent-blue/50 bg-white/8 shadow-[0_0_20px_rgba(59,130,246,0.1)]"
-                          : "border-white/10 hover:border-white/20",
+                          ? "border-accent-blue/50 bg-surface shadow-[0_0_20px_rgba(59,130,246,0.1)]"
+                          : "border-border hover:border-glass-border",
                         errors.message && "border-red-500/50"
                       )}
                     />
