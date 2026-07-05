@@ -3,7 +3,27 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FOOTER_LINKS, CONTACT } from "@/lib/data";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Mail } from "lucide-react";
+
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
 
 export function Footer() {
   return (
@@ -29,6 +49,22 @@ export function Footer() {
               Global technology company engineering mission-critical software, AI products, and digital infrastructure worldwide.
             </p>
             <div className="space-y-2 mb-6">
+              <a
+                href={`mailto:${CONTACT.email}`}
+                className="flex items-center gap-2 text-sm text-foreground/60 hover:text-foreground transition-colors"
+              >
+                <Mail className="w-4 h-4 shrink-0" />
+                <span>{CONTACT.email}</span>
+              </a>
+              <a
+                href={CONTACT.instagram.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-foreground/60 hover:text-foreground transition-colors"
+              >
+                <InstagramIcon className="w-4 h-4 shrink-0" />
+                <span>@{CONTACT.instagram.handle}</span>
+              </a>
               {CONTACT.phones.map((phone) => (
                 <a
                   key={phone.href}

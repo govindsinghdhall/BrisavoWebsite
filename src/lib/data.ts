@@ -1,5 +1,9 @@
 export const CONTACT = {
-  email: "hello@brisavo.com",
+  email: "hellobrisavo@gmail.com",
+  instagram: {
+    handle: "helloBrisavo",
+    href: "https://www.instagram.com/helloBrisavo/",
+  },
   phones: [
     { label: "Canada", number: "+1 236 818 4654", href: "tel:+12368184654", flag: "🇨🇦" },
     { label: "India", number: "+91 99991 07733", href: "tel:+919999107733", flag: "🇮🇳" },

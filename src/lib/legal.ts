@@ -35,13 +35,13 @@ export const PRIVACY_SECTIONS = [
   {
     title: "Your Rights",
     content: [
-      "Depending on your jurisdiction, you may have rights to access, correct, delete, or restrict processing of your personal data. Contact us at hello@brisavo.com to exercise these rights.",
+      "Depending on your jurisdiction, you may have rights to access, correct, delete, or restrict processing of your personal data. Contact us at hellobrisavo@gmail.com to exercise these rights.",
     ],
   },
   {
     title: "Contact Us",
     content: [
-      "For privacy-related questions, contact us at hello@brisavo.com or call +1 236 818 4654 (Canada) / +91 99991 07733 (India).",
+      "For privacy-related questions, contact us at hellobrisavo@gmail.com or call +1 236 818 4654 (Canada) / +91 99991 07733 (India).",
     ],
   },
 ] as const;
@@ -93,7 +93,7 @@ export const TERMS_SECTIONS = [
   {
     title: "Contact",
     content: [
-      "For questions about these Terms, contact hello@brisavo.com or +1 236 818 4654 (Canada) / +91 99991 07733 (India).",
+      "For questions about these Terms, contact hellobrisavo@gmail.com or +1 236 818 4654 (Canada) / +91 99991 07733 (India).",
     ],
   },
 ] as const;

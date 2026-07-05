@@ -15,10 +15,52 @@ const ICON_MAP = {
   users: Users,
 } as const;
 
+const CLIENTS = ["Durga Property", "Vercel", "Render", "Neon", "Crestwood Payments", "Regina Food Corner"] as const;
+
 export function HomeOverview() {
   return (
     <section className="section-padding !py-16 md:!py-20 relative">
       <div className="container-wide">
+        <BlurReveal delay={0.03}>
+          <div className="mb-12 md:mb-14">
+            <div className="rounded-[2rem] border border-border/70 bg-gradient-to-br from-background via-background/95 to-accent-cyan/5 p-6 md:p-8 shadow-[0_20px_80px_rgba(0,0,0,0.08)]">
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
+                <div className="max-w-2xl">
+                  <span className="text-xs font-mono uppercase tracking-[0.25em] text-accent-cyan mb-3 block">
+                    Our Clients
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">
+                    Trusted by teams building what’s next.
+                  </h3>
+                  <p className="mt-3 text-sm md:text-base text-muted max-w-xl">
+                    A select group of partners who rely on Brisavo for strategy, product design, and digital delivery.
+                  </p>
+                </div>
+                <div className="inline-flex items-center rounded-full border border-border/70 bg-background/70 px-3 py-2 text-xs font-mono uppercase tracking-[0.2em] text-foreground/70">
+                  Another Brisavo section
+                </div>
+              </div>
+
+              <div className="overflow-hidden rounded-2xl border border-border/60 bg-background/60 p-3 md:p-4">
+                <motion.div
+                  animate={{ x: ["0%", "-50%"] }}
+                  transition={{ repeat: Infinity, duration: 18, ease: "linear" }}
+                  className="flex w-max gap-3"
+                >
+                  {[...CLIENTS, ...CLIENTS].map((client, index) => (
+                    <div
+                      key={`${client}-${index}`}
+                      className="min-w-[180px] rounded-xl border border-border/70 bg-background/80 px-4 py-3 text-center text-sm font-medium text-foreground/80 shadow-sm"
+                    >
+                      {client}
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </BlurReveal>
+
         <BlurReveal>
           <div className="text-center mb-10">
             <span className="text-xs font-mono uppercase tracking-[0.2em] text-accent-cyan mb-3 block">

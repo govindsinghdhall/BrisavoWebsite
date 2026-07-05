@@ -46,9 +46,8 @@ export function Navigation() {
         <nav
           className={cn(
             "container-wide mx-auto flex items-center justify-between rounded-2xl px-6 py-3 transition-all duration-500",
-            scrolled
-              ? "glass-strong shadow-[0_8px_32px_var(--nav-shadow)]"
-              : "bg-transparent"
+            "glass-strong shadow-[0_4px_24px_var(--nav-shadow)]",
+            scrolled && "shadow-[0_8px_32px_var(--nav-shadow)]"
           )}
         >
           <Link href="/" className="flex items-center gap-3 group">
