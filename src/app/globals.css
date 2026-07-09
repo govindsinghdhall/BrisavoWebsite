@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 :root {
+  --font-geist-sans: "Inter", "Segoe UI", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  --font-geist-mono: "SFMono-Regular", "SF Mono", "Monaco", Consolas, "Liberation Mono", monospace;
   --background: #f8f9fb;
   --foreground: #09090b;
   --muted: #71717a;
@@ -176,6 +178,11 @@ body {
 @keyframes shimmer {
   0% { background-position: -200% center; }
   100% { background-position: 200% center; }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .animate-aurora {
