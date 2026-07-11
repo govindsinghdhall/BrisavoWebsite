@@ -19,9 +19,9 @@ function GlobeMesh() {
   });
 
   const points = useMemo(() => {
-    const toronto = new THREE.Vector3(-0.6, 0.35, 0.7).normalize().multiplyScalar(1.02);
-    const bangalore = new THREE.Vector3(0.75, -0.15, 0.65).normalize().multiplyScalar(1.02);
-    return { toronto, bangalore };
+    const Vancouver = new THREE.Vector3(-0.6, 0.35, 0.7).normalize().multiplyScalar(1.02);
+    const Gurugram = new THREE.Vector3(0.75, -0.15, 0.65).normalize().multiplyScalar(1.02);
+    return { Vancouver, Gurugram };
   }, []);
 
   return (
@@ -48,7 +48,7 @@ function GlobeMesh() {
         />
       </Sphere>
 
-      {[points.toronto, points.bangalore].map((pos, i) => (
+      {[points.Vancouver, points.Gurugram].map((pos, i) => (
         <group key={i} position={pos}>
           <mesh>
             <sphereGeometry args={[0.025, 16, 16]} />
@@ -61,7 +61,7 @@ function GlobeMesh() {
         </group>
       ))}
 
-      <ConnectionLine start={points.toronto} end={points.bangalore} />
+      <ConnectionLine start={points.Vancouver} end={points.Gurugram} />
     </group>
   );
 }

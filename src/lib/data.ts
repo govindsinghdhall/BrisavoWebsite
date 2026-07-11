@@ -8,7 +8,7 @@ export const CONTACT = {
     { label: "Canada", number: "+1 236 818 4654", href: "tel:+12368184654", flag: "🇨🇦" },
     { label: "India", number: "+91 99991 07733", href: "tel:+919999107733", flag: "🇮🇳" },
   ],
-  offices: "Toronto 🇨🇦 · Bangalore 🇮🇳",
+  offices: "Vancouver 🇨🇦 · Gurugram 🇮🇳",
 } as const;
 
 export const NAV_LINKS = [
@@ -86,7 +86,7 @@ export const TEAM = [
     department: "Technology",
     bio: "Architecting scalable systems and leading cross-continental engineering teams across Canada and India.",
     avatar: "EL",
-    location: "Toronto · Bangalore",
+    location: "Vancouver · Gurugram",
   },
   {
     name: "Product Strategy",
@@ -94,7 +94,7 @@ export const TEAM = [
     department: "Product",
     bio: "Driving product vision from concept to market — aligning business goals with world-class user experiences.",
     avatar: "PS",
-    location: "Toronto",
+    location: "Vancouver",
   },
   {
     name: "AI Research",
@@ -102,7 +102,7 @@ export const TEAM = [
     department: "Artificial Intelligence",
     bio: "Building production ML systems, LLM integrations, and intelligent automation for enterprise clients worldwide.",
     avatar: "AR",
-    location: "Bangalore",
+    location: "Gurugram",
   },
   {
     name: "Client Success",
@@ -110,7 +110,7 @@ export const TEAM = [
     department: "Operations",
     bio: "Ensuring every engagement exceeds expectations with transparent communication and on-time delivery.",
     avatar: "CS",
-    location: "Toronto · Bangalore",
+    location: "Vancouver · Gurugram",
   },
   {
     name: "Cloud Architecture",
@@ -118,7 +118,7 @@ export const TEAM = [
     department: "Infrastructure",
     bio: "Designing resilient cloud-native architectures on AWS, GCP, and Azure for global-scale deployments.",
     avatar: "CA",
-    location: "Bangalore",
+    location: "Gurugram",
   },
   {
     name: "Design Systems",
@@ -126,7 +126,7 @@ export const TEAM = [
     department: "Design",
     bio: "Crafting premium digital experiences and design systems that define how enterprise software should feel.",
     avatar: "DS",
-    location: "Toronto",
+    location: "Vancouver",
   },
 ] as const;
 
@@ -137,7 +137,7 @@ export const FOUNDERS = [
     bio: "Visionary leader driving Brisavo's global expansion and strategic partnerships. Passionate about building technology that transforms how businesses operate at international scale.",
     focus: ["Global Strategy", "Enterprise Partnerships", "Company Vision"],
     avatar: "CEO",
-    location: "Toronto, Canada",
+    location: "Vancouver, Canada",
   },
   {
     name: "Co-Founder & CTO",
@@ -145,7 +145,7 @@ export const FOUNDERS = [
     bio: "Technical architect behind Brisavo's engineering excellence. Leads AI research, platform architecture, and the Canada-India delivery network that powers 24/7 development.",
     focus: ["AI & Platform Architecture", "Engineering Culture", "Technical Strategy"],
     avatar: "CTO",
-    location: "Bangalore, India",
+    location: "Gurugram, India",
   },
 ] as const;
 
@@ -307,7 +307,7 @@ export const OFFICES = [
   {
     country: "Canada",
     flag: "🇨🇦",
-    city: "Toronto",
+    city: "Vancouver",
     role: "North American Headquarters",
     phone: "+1 236 818 4654",
     phoneHref: "tel:+12368184654",
@@ -317,7 +317,7 @@ export const OFFICES = [
   {
     country: "India",
     flag: "🇮🇳",
-    city: "Bangalore",
+    city: "Gurugram",
     role: "Engineering & Delivery Center",
     phone: "+91 99991 07733",
     phoneHref: "tel:+919999107733",
@@ -374,7 +374,7 @@ export const TESTIMONIALS = [
 
 export const TIMELINE = [
   { year: "2018", title: "Founded", description: "Brisavo established with a vision for global technology excellence" },
-  { year: "2020", title: "India Expansion", description: "Engineering center launched in Bangalore" },
+  { year: "2020", title: "India Expansion", description: "Engineering center launched in Gurugram" },
   { year: "2022", title: "AI Division", description: "Dedicated AI research and product engineering team" },
   { year: "2024", title: "Enterprise Scale", description: "150+ enterprise clients across 30 countries" },
   { year: "2026", title: "Global Leader", description: "Recognized as a premier global technology partner" },

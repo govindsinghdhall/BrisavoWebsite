@@ -81,7 +81,7 @@ export const TERMS_SECTIONS = [
   {
     title: "Governing Law",
     content: [
-      "These Terms are governed by the laws of the Province of Ontario, Canada, without regard to conflict of law principles. Disputes shall be resolved in the courts of Toronto, Ontario.",
+      "These Terms are governed by the laws of the Province of Ontario, Canada, without regard to conflict of law principles. Disputes shall be resolved in the courts of Vancouver, Ontario.",
     ],
   },
   {

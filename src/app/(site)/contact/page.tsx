@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <PageHero
+      {/* <PageHero
         label="Contact Command Center"
         title="Let's Build Something Extraordinary"
         description="Ready to transform your technology? Our global team is standing by across Canada and India."
-      />
+      /> */}
       <Contact showHeader={false} />
     </>
   );

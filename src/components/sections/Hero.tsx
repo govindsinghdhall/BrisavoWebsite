@@ -68,7 +68,7 @@ export function Hero() {
   initial={{ opacity: 0, y: 24 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ delay: 0.2, duration: 0.9 }}
-  className="mb-6 pb-3 max-w-5xl text-[2rem] font-black leading-[1.2] tracking-[-0.04em] text-foreground sm:text-[2.8rem] md:text-[3.6rem] lg:text-[4.4rem] xl:text-[5rem]"
+  className="mb-6 max-w-5xl text-[2rem] font-black leading-[1.1] tracking-[-0.04em] text-foreground sm:text-[2.8rem] md:text-[3.6rem] lg:text-[4.4rem] xl:text-[5rem]"
 >
   <span className="block">Building the Future of</span>
   <span className="mt-2 block bg-[length:200%_100%] text-gradient-accent sm:mt-3">

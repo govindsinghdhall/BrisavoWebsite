@@ -84,7 +84,7 @@ export function Navigation() {
           <div className="hidden xl:flex items-center gap-2">
             <ThemeToggle />
             <MagneticButton href="/contact" variant="primary" className="!px-6 !py-2.5 !text-sm">
-              Request a Demo
+              Contact Us
             </MagneticButton>
           </div>
 
@@ -156,7 +156,7 @@ export function Navigation() {
                   className="w-full"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Request a Demo
+                  Contact Us
                 </MagneticButton>
               </motion.div>
             </motion.nav>

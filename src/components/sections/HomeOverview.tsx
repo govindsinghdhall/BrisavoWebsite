@@ -15,7 +15,7 @@ const ICON_MAP = {
   users: Users,
 } as const;
 
-const CLIENTS = ["Durga Property", "Vercel", "Render", "Neon", "Crestwood Payments", "Regina Food Corner"] as const;
+const CLIENTS = ["Durga Property", "Vercel", "Render", "Neon", "Crestwood Payments", "Regina Food Corner", "DGN Haulers Transport"] as const;
 
 export function HomeOverview() {
   return (
