@@ -1,8 +1,8 @@
 export const CONTACT = {
   email: "hellobrisavo@gmail.com",
   instagram: {
-    handle: "helloBrisavo",
-    href: "https://www.instagram.com/helloBrisavo/",
+    handle: "hellobrisavo",
+    href: "https://www.instagram.com/hellobrisavo/",
   },
   phones: [
     { label: "Canada", number: "+1 236 818 4654", href: "tel:+12368184654", flag: "🇨🇦" },
@@ -18,7 +18,7 @@ export const NAV_LINKS = [
   { label: "Why Us", href: "/why-us" },
   { label: "Team", href: "/team" },
   { label: "Founders", href: "/founders-office" },
-  { label: "Contact", href: "/contact" },
+  // { label: "Contact", href: "/contact" },
 ] as const;
 
 export const FOOTER_LINKS = {
@@ -35,7 +35,7 @@ export const FOOTER_LINKS = {
     { label: "Digital Transformation", href: "/services" },
   ],
   Products: [
-    { label: "Brisavo CRM", href: "/products" },
+    { label: "BRISΛVO CRM", href: "/products" },
     { label: "Property Management", href: "/products" },
     { label: "Lead Management", href: "/products" },
     { label: "WhatsApp Automation", href: "/products" },
@@ -74,7 +74,7 @@ export const WHY_US = [
   },
   {
     title: "Proven at Scale",
-    description: "150+ enterprise clients across 30 countries trust Brisavo for platforms handling millions of daily transactions.",
+    description: "150+ enterprise clients across 30 countries trust BRISΛVO for platforms handling millions of daily transactions.",
     icon: "chart",
   },
 ] as const;
@@ -134,7 +134,7 @@ export const FOUNDERS = [
   {
     name: "Founder & CEO",
     title: "Chief Executive Officer",
-    bio: "Visionary leader driving Brisavo's global expansion and strategic partnerships. Passionate about building technology that transforms how businesses operate at international scale.",
+    bio: "Visionary leader driving BRISΛVO's global expansion and strategic partnerships. Passionate about building technology that transforms how businesses operate at international scale.",
     focus: ["Global Strategy", "Enterprise Partnerships", "Company Vision"],
     avatar: "CEO",
     location: "Vancouver, Canada",
@@ -142,7 +142,7 @@ export const FOUNDERS = [
   {
     name: "Co-Founder & CTO",
     title: "Chief Technology Officer",
-    bio: "Technical architect behind Brisavo's engineering excellence. Leads AI research, platform architecture, and the Canada-India delivery network that powers 24/7 development.",
+    bio: "Technical architect behind BRISΛVO's engineering excellence. Leads AI research, platform architecture, and the Canada-India delivery network that powers 24/7 development.",
     focus: ["AI & Platform Architecture", "Engineering Culture", "Technical Strategy"],
     avatar: "CTO",
     location: "Gurugram, India",
@@ -263,7 +263,7 @@ export const SERVICES = [
 export const PRODUCTS = [
   {
     id: "crm",
-    name: "Brisavo CRM",
+    name: "BRISΛVO CRM",
     tagline: "Unified customer intelligence",
     description: "Enterprise CRM with AI-powered insights, pipeline automation, and global team collaboration.",
     color: "#3b82f6",
@@ -336,7 +336,7 @@ export const METRICS = [
 export const TESTIMONIALS = [
   {
     id: "1",
-    quote: "Brisavo transformed our entire digital infrastructure. Their engineering team delivered a platform that handles millions of transactions daily with zero downtime.",
+    quote: "BRISΛVO transformed our entire digital infrastructure. Their engineering team delivered a platform that handles millions of transactions daily with zero downtime.",
     author: "Sarah Chen",
     role: "CTO, FinScale Global",
     company: "FinScale",
@@ -354,7 +354,7 @@ export const TESTIMONIALS = [
   },
   {
     id: "3",
-    quote: "Working with Brisavo feels like having an elite in-house engineering team. Their Canada-India delivery model gives us 24/7 development velocity.",
+    quote: "Working with BRISΛVO feels like having an elite in-house engineering team. Their Canada-India delivery model gives us 24/7 development velocity.",
     author: "Michael Torres",
     role: "CEO, CloudBridge Systems",
     company: "CloudBridge",
@@ -363,7 +363,7 @@ export const TESTIMONIALS = [
   },
   {
     id: "4",
-    quote: "From concept to production in 8 weeks. The Brisavo CRM platform now powers our entire sales organization across 15 countries.",
+    quote: "From concept to production in 8 weeks. The BRISΛVO CRM platform now powers our entire sales organization across 15 countries.",
     author: "Emily Watson",
     role: "Director of Sales Ops, Meridian",
     company: "Meridian",
@@ -373,7 +373,7 @@ export const TESTIMONIALS = [
 ] as const;
 
 export const TIMELINE = [
-  { year: "2018", title: "Founded", description: "Brisavo established with a vision for global technology excellence" },
+  { year: "2018", title: "Founded", description: "BRISΛVO established with a vision for global technology excellence" },
   { year: "2020", title: "India Expansion", description: "Engineering center launched in Gurugram" },
   { year: "2022", title: "AI Division", description: "Dedicated AI research and product engineering team" },
   { year: "2024", title: "Enterprise Scale", description: "150+ enterprise clients across 30 countries" },

@@ -3,8 +3,8 @@ import { PageHero } from "@/components/layout/PageHero";
 import { Products } from "@/components/sections/Products";
 
 export const metadata: Metadata = {
-  title: "Products — Brisavo",
-  description: "Enterprise platforms including Brisavo CRM, Property Management, Lead Management, WhatsApp Automation, and AI Assistant.",
+  title: "Products — BRISΛVO",
+  description: "Enterprise platforms including BRISΛVO CRM, Property Management, Lead Management, WhatsApp Automation, and AI Assistant.",
 };
 
 export default function ProductsPage() {

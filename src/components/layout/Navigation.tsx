@@ -51,13 +51,12 @@ export function Navigation() {
           )}
         >
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-8 h-8">
-              <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-accent-blue to-accent-violet opacity-80 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute inset-[2px] rounded-[6px] bg-background flex items-center justify-center">
-                <span className="text-xs font-bold text-gradient-accent">B</span>
-              </div>
+            <div className="relative w-8 h-8 overflow-hidden rounded-2xl bg-slate-950/5 border border-white/10 shadow-[0_0_40px_rgba(59,130,246,0.12)]">
+              <img src="/logo.svg" alt="BRISΛVO logo" className="h-full w-full object-cover" />
             </div>
-            <span className="text-lg font-semibold tracking-tight">Brisavo</span>
+            <span className="text-lg font-semibold tracking-wider">
+              BRIS<span style={{ color: "#5B74F6" }}>Λ</span>VO
+            </span>
           </Link>
 
           <div className="hidden xl:flex items-center gap-0.5">

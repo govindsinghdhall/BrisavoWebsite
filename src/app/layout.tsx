@@ -5,11 +5,16 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Brisavo — Global Technology Company | AI, Software & Enterprise Systems",
+  title: "BRISΛVO — Global Technology Company | AI, Software & Enterprise Systems",
   description:
-    "Brisavo is a global technology company with offices in Canada and India, engineering mission-critical software, AI products, and digital infrastructure for businesses worldwide.",
+    "BRISΛVO is a global technology company with offices in Canada and India, engineering mission-critical software, AI products, and digital infrastructure for businesses worldwide.",
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
+  metadataBase: new URL("https://BRISΛVO.com"),
   keywords: [
-    "Brisavo",
+    "BRISΛVO",
     "global technology company",
     "AI development",
     "enterprise software",
@@ -18,18 +23,18 @@ export const metadata: Metadata = {
     "digital transformation",
     "cloud infrastructure",
   ],
-  authors: [{ name: "Brisavo Technologies" }],
+  authors: [{ name: "BRISΛVO Technologies" }],
   openGraph: {
-    title: "Brisavo — Building The Future Of Digital Infrastructure",
+    title: "BRISΛVO — Building The Future Of Digital Infrastructure",
     description:
       "Global technology company engineering AI, software, automation, and enterprise systems. Canada × India.",
-    url: "https://brisavo.com",
-    siteName: "Brisavo",
+    url: "https://BRISΛVO.com",
+    siteName: "BRISΛVO",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Brisavo — Global Technology Company",
+    title: "BRISΛVO — Global Technology Company",
     description: "Engineering excellence across continents. AI. Software. Automation. Scale.",
   },
   robots: { index: true, follow: true },

@@ -22,7 +22,7 @@ export function Testimonials() {
         <SectionHeader
           label="Client Stories"
           title="Voices Of Global Impact"
-          description="Leaders worldwide trust Brisavo to engineer their most critical technology."
+          description="Leaders worldwide trust BRISΛVO to engineer their most critical technology."
           align="center"
           compact
         />
@@ -77,9 +77,8 @@ export function Testimonials() {
                 <button
                   key={i}
                   onClick={() => setActive(i)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === active ? "w-8 bg-accent-blue" : "w-1.5 bg-foreground/20"
-                  }`}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${i === active ? "w-8 bg-accent-blue" : "w-1.5 bg-foreground/20"
+                    }`}
                   aria-label={`Go to testimonial ${i + 1}`}
                 />
               ))}
@@ -101,9 +100,8 @@ export function Testimonials() {
               key={t.id}
               onClick={() => setActive(i)}
               whileHover={{ y: -4 }}
-              className={`glass rounded-xl px-4 py-3 flex items-center gap-3 transition-all duration-300 ${
-                i === active ? "border-accent-blue/30 bg-accent-blue/5" : "border-border"
-              }`}
+              className={`glass rounded-xl px-4 py-3 flex items-center gap-3 transition-all duration-300 ${i === active ? "border-accent-blue/30 bg-accent-blue/5" : "border-border"
+                }`}
             >
               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-accent-blue/50 to-accent-violet/50 flex items-center justify-center text-xs font-semibold">
                 {t.avatar}

@@ -4,8 +4,8 @@ import { LegalContent } from "@/components/sections/LegalContent";
 import { PRIVACY_SECTIONS } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Brisavo",
-  description: "How Brisavo collects, uses, and protects your personal information.",
+  title: "Privacy Policy — BRISΛVO",
+  description: "How BRISΛVO collects, uses, and protects your personal information.",
 };
 
 export default function PrivacyPage() {

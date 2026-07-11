@@ -4,8 +4,8 @@ import { LegalContent } from "@/components/sections/LegalContent";
 import { TERMS_SECTIONS } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions — Brisavo",
-  description: "Terms and Conditions governing the use of Brisavo's website and services.",
+  title: "Terms & Conditions — BRISΛVO",
+  description: "Terms and Conditions governing the use of BRISΛVO's website and services.",
 };
 
 export default function TermsPage() {

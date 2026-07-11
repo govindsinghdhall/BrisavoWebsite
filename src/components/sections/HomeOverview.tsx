@@ -33,11 +33,11 @@ export function HomeOverview() {
                     Trusted by teams building what’s next.
                   </h3>
                   <p className="mt-3 text-sm md:text-base text-muted max-w-xl">
-                    A select group of partners who rely on Brisavo for strategy, product design, and digital delivery.
+                    A select group of partners who rely on BRISΛVO for strategy, product design, and digital delivery.
                   </p>
                 </div>
                 <div className="inline-flex items-center rounded-full border border-border/70 bg-background/70 px-3 py-2 text-xs font-mono uppercase tracking-[0.2em] text-foreground/70">
-                  Another Brisavo section
+                  Another BRISΛVO section
                 </div>
               </div>
 
@@ -64,7 +64,7 @@ export function HomeOverview() {
         <BlurReveal>
           <div className="text-center mb-10">
             <span className="text-xs font-mono uppercase tracking-[0.2em] text-accent-cyan mb-3 block">
-              Explore Brisavo
+              Explore BRISΛVO
             </span>
             <h2 className="text-2xl md:text-4xl font-semibold tracking-tight">
               Everything We Build
