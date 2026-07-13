@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { HOME_LINKS } from "@/lib/data";
@@ -15,7 +16,12 @@ const ICON_MAP = {
   users: Users,
 } as const;
 
-const CLIENTS = ["Durga Property", "Vercel", "Render", "Neon", "Crestwood Payments", "Regina Food Corner", "DGN Haulers Transport"] as const;
+const CLIENTS = [
+  { name: "Godrej Properties", logo: "/clients/godrej.png" },
+  { name: "DLF", logo: "/clients/dlf.png" },
+  { name: "Signature Global", logo: "/clients/signature-global.png" },
+  { name: "M3M", logo: "/clients/m3m.png" },
+] as const;
 
 export function HomeOverview() {
   return (
@@ -37,22 +43,28 @@ export function HomeOverview() {
                   </p>
                 </div>
                 <div className="inline-flex items-center rounded-full border border-border/70 bg-background/70 px-3 py-2 text-xs font-mono uppercase tracking-[0.2em] text-foreground/70">
-                  Another BRISΛVO section
+                  Real estate leaders
                 </div>
               </div>
 
               <div className="overflow-hidden rounded-2xl border border-border/60 bg-background/60 p-3 md:p-4">
                 <motion.div
                   animate={{ x: ["0%", "-50%"] }}
-                  transition={{ repeat: Infinity, duration: 18, ease: "linear" }}
+                  transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
                   className="flex w-max gap-3"
                 >
-                  {[...CLIENTS, ...CLIENTS].map((client, index) => (
+                  {[...CLIENTS, ...CLIENTS, ...CLIENTS, ...CLIENTS].map((client, index) => (
                     <div
-                      key={`${client}-${index}`}
-                      className="min-w-[180px] rounded-xl border border-border/70 bg-background/80 px-4 py-3 text-center text-sm font-medium text-foreground/80 shadow-sm"
+                      key={`${client.name}-${index}`}
+                      className="flex h-20 w-[200px] shrink-0 items-center justify-center rounded-xl border border-border/70 bg-white px-5 py-3 shadow-sm md:h-24 md:w-[220px]"
                     >
-                      {client}
+                      <Image
+                        src={client.logo}
+                        alt={`${client.name} logo`}
+                        width={160}
+                        height={64}
+                        className="max-h-12 w-auto max-w-[150px] object-contain md:max-h-14 md:max-w-[170px]"
+                      />
                     </div>
                   ))}
                 </motion.div>

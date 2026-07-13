@@ -4,17 +4,18 @@ import { Products } from "@/components/sections/Products";
 
 export const metadata: Metadata = {
   title: "Products — BRISΛVO",
-  description: "Enterprise platforms including BRISΛVO CRM, Property Management, Lead Management, WhatsApp Automation, and AI Assistant.",
+  description:
+    "Flagship Real Estate Property Management CRM with contacts, leads, bookings, site visits, roles, reporting, and WhatsApp marketing — plus supporting enterprise platforms.",
 };
 
 export default function ProductsPage() {
   return (
     <>
-      <PageHero
+      {/* <PageHero
         label="Products"
-        title="Billion-Dollar Software Platforms"
-        description="Production-ready products engineered for scale — powering operations for enterprises worldwide."
-      />
+        title="Real Estate CRM at the center"
+        description="Our flagship multi-tenant Real Estate Property Management Software CRM — with complementary platforms for leads, messaging, and AI."
+      /> */}
       <Products showHeader={false} />
     </>
   );

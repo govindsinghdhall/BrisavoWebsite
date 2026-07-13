@@ -35,10 +35,10 @@ export const FOOTER_LINKS = {
     { label: "Digital Transformation", href: "/services" },
   ],
   Products: [
-    { label: "BRISΛVO CRM", href: "/products" },
-    { label: "Property Management", href: "/products" },
-    { label: "Lead Management", href: "/products" },
-    { label: "WhatsApp Automation", href: "/products" },
+    { label: "Real Estate CRM", href: "/products#real-estate-crm" },
+    { label: "Property Management", href: "/products#real-estate-crm" },
+    { label: "Lead Management", href: "/products#real-estate-crm" },
+    { label: "WhatsApp Automation", href: "/products#whatsapp" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy" },
@@ -260,22 +260,58 @@ export const SERVICES = [
   },
 ] as const;
 
+export const FEATURED_PRODUCT = {
+  id: "real-estate-crm",
+  name: "Real Estate CRM",
+  tagline: "Property Management Software CRM",
+  headline: "The operating system for real estate teams",
+  description:
+    "A multi-tenant real estate CRM that unifies contacts, leads, properties, bookings, site visits, organizations, users, roles, and reporting in one dashboard — with marketing automation and WhatsApp outreach built in.",
+  summary:
+    "Built with a modern React + TypeScript frontend and a Node.js + Express + MongoDB backend, this platform combines operational CRM workflows with marketing tools so real estate businesses can manage relationships and outreach from a single system.",
+  color: "#3b82f6",
+  image: "/products/real-estate-crm-dashboard.png",
+  imageAlt: "BRISΛVO Real Estate CRM dashboard showing properties, revenue, occupancy, and maintenance",
+  stack: ["React", "TypeScript", "Node.js", "Express", "MongoDB"],
+  metrics: ["Multi-tenant", "JWT auth", "WhatsApp API", "Role-based access"],
+  capabilities: [
+    {
+      title: "Contacts & Leads",
+      description: "Manual contact creation, organization-level data, and lead pipelines in one place.",
+    },
+    {
+      title: "Properties & Bookings",
+      description: "Property workflows, site visit scheduling, and lead–property associations.",
+    },
+    {
+      title: "Roles & Security",
+      description: "JWT authentication with role-based permissions for secure team access.",
+    },
+    {
+      title: "WhatsApp Marketing",
+      description: "Send template or custom messages via WhatsApp Business API from stored campaigns.",
+    },
+    {
+      title: "Org Settings",
+      description: "Company and organization settings separated from marketing configuration.",
+    },
+    {
+      title: "Unified Reporting",
+      description: "Dashboards and reporting across contacts, properties, bookings, and outreach.",
+    },
+  ],
+} as const;
+
 export const PRODUCTS = [
   {
-    id: "crm",
-    name: "BRISΛVO CRM",
-    tagline: "Unified customer intelligence",
-    description: "Enterprise CRM with AI-powered insights, pipeline automation, and global team collaboration.",
+    id: "real-estate-crm",
+    name: "Real Estate CRM",
+    tagline: "Property management software CRM",
+    description:
+      "Multi-tenant CRM for contacts, leads, properties, bookings, site visits, roles, reporting, and WhatsApp marketing — in one dashboard.",
     color: "#3b82f6",
-    metrics: ["50K+ contacts", "99.9% uptime", "Real-time sync"],
-  },
-  {
-    id: "property",
-    name: "Property Management",
-    tagline: "Intelligent real estate operations",
-    description: "End-to-end property lifecycle management with tenant portals, maintenance workflows, and financial reporting.",
-    color: "#8b5cf6",
-    metrics: ["10K+ units", "Automated billing", "IoT integration"],
+    metrics: ["Multi-tenant", "Site visits", "WhatsApp API"],
+    featured: true,
   },
   {
     id: "leads",
@@ -284,14 +320,16 @@ export const PRODUCTS = [
     description: "AI-driven lead scoring, multi-channel capture, and automated nurture sequences that close deals.",
     color: "#06b6d4",
     metrics: ["3x conversion", "Multi-channel", "Smart routing"],
+    featured: false,
   },
   {
     id: "whatsapp",
     name: "WhatsApp Automation",
     tagline: "Conversations at scale",
-    description: "Enterprise WhatsApp Business API with chatbots, broadcast campaigns, and CRM integration.",
+    description: "Enterprise WhatsApp Business API with templates, broadcast campaigns, and CRM-connected outreach.",
     color: "#10b981",
-    metrics: ["1M+ messages", "24/7 bots", "CRM sync"],
+    metrics: ["Templates", "Graph API", "CRM sync"],
+    featured: false,
   },
   {
     id: "ai-assistant",
@@ -300,6 +338,7 @@ export const PRODUCTS = [
     description: "Custom AI agents trained on your data — support, sales, operations, and internal knowledge.",
     color: "#ec4899",
     metrics: ["Custom training", "Multi-modal", "Enterprise secure"],
+    featured: false,
   },
 ] as const;
 
@@ -383,7 +422,7 @@ export const TIMELINE = [
 export const HOME_LINKS = [
   { label: "Services", href: "/services", description: "12 engineering disciplines", icon: "layers" },
   { label: "Technology", href: "/technology", description: "65+ production technologies", icon: "cpu" },
-  { label: "Products", href: "/products", description: "5 enterprise platforms", icon: "box" },
+  { label: "Products", href: "/products", description: "Real Estate CRM & platforms", icon: "box" },
   { label: "Global", href: "/global", description: "Canada × India network", icon: "globe" },
   { label: "Why Us", href: "/why-us", description: "What sets us apart", icon: "star" },
   { label: "Team", href: "/team", description: "Meet our leaders", icon: "users" },

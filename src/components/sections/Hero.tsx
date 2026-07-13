@@ -82,7 +82,7 @@ export function Hero() {
             transition={{ delay: 0.35, duration: 0.8 }}
             className="mb-8 max-w-[700px] text-base leading-8 text-muted sm:text-lg"
           >
-            A combination of brilliance and evolution. We help ambitious businesses scale faster with AI, Cloud, SaaS Platforms, Enterprise Software, and Digital Transformation.
+            Home of our flagship Real Estate Property Management CRM — plus AI, Cloud, SaaS, and enterprise systems that help ambitious businesses scale.
           </motion.p>
 
           <motion.div
@@ -92,19 +92,19 @@ export function Hero() {
             className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4"
           >
             <MagneticButton
-              href="/contact"
+              href="/products#real-estate-crm"
               variant="primary"
               className="!px-8 !py-3.5 !text-sm sm:!px-10 sm:!py-4"
             >
-              Request a Demo
+              Explore Real Estate CRM
               <ArrowRight className="h-4 w-4" />
             </MagneticButton>
             <MagneticButton
-              href="/products"
+              href="/contact"
               variant="secondary"
               className="!px-8 !py-3.5 !text-sm sm:!px-10 sm:!py-4"
             >
-              Explore Products
+              Request a Demo
             </MagneticButton>
           </motion.div>
         </motion.div>
