@@ -15,10 +15,10 @@ export const NAV_LINKS = [
   { label: "Services", href: "/services" },
   { label: "Technology", href: "/technology" },
   { label: "Products", href: "/products" },
+  { label: "Blog", href: "/blog" },
   { label: "Why Us", href: "/why-us" },
   { label: "Team", href: "/team" },
   { label: "Founders", href: "/founders-office" },
-  // { label: "Contact", href: "/contact" },
 ] as const;
 
 export const FOOTER_LINKS = {
@@ -26,6 +26,7 @@ export const FOOTER_LINKS = {
     { label: "Why Us", href: "/why-us" },
     { label: "Meet the Team", href: "/team" },
     { label: "Founders Office", href: "/founders-office" },
+    { label: "Blog", href: "/blog" },
     { label: "Global Presence", href: "/global" },
   ],
   Services: [
