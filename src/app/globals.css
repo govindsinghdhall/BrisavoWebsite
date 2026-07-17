@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --font-geist-sans: "Inter", "Segoe UI", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
   --font-geist-mono: "SFMono-Regular", "SF Mono", "Monaco", Consolas, "Liberation Mono", monospace;

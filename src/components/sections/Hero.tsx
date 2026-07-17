@@ -2,6 +2,7 @@
 
 import { useState, type MouseEvent } from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { ArrowRight, Globe2 } from "lucide-react";
@@ -23,6 +24,51 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen overflow-visible bg-background mesh-gradient noise-overlay">
+      <div className="absolute inset-0 z-0">
+        {/* Mobile & tablet: full-bleed wallpaper with vertical scrim */}
+        <div className="absolute inset-x-0 bottom-0 top-16 lg:hidden">
+          <Image
+            src="/wallpapers/hero-day.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center dark:hidden"
+          />
+          <Image
+            src="/wallpapers/hero-night.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="hidden object-cover object-center dark:block"
+          />
+          <div className="absolute inset-0 bg-linear-to-b from-background/70 via-background/40 to-background" />
+        </div>
+
+        {/* Desktop: mascot anchored to the right half, fading out toward the text */}
+        <div className="absolute bottom-0 right-0 top-24 hidden w-[54%] lg:block mask-[linear-gradient(to_right,transparent,black_22%)]">
+          <Image
+            src="/wallpapers/hero-day.png"
+            alt=""
+            fill
+            priority
+            sizes="55vw"
+            className="object-cover object-center dark:hidden"
+          />
+          <Image
+            src="/wallpapers/hero-night.png"
+            alt=""
+            fill
+            priority
+            sizes="55vw"
+            className="hidden object-cover object-center dark:block"
+          />
+        </div>
+        <div className="absolute inset-0 hidden bg-linear-to-r from-background via-background/15 to-transparent lg:block" />
+        <div className="absolute inset-x-0 bottom-0 hidden h-32 bg-linear-to-t from-background to-transparent lg:block" />
+      </div>
+
       <ParticleScene className="absolute inset-0 z-0 opacity-40" />
 
       <div className="absolute inset-0 z-0">
@@ -39,12 +85,12 @@ export function Hero() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         onMouseMove={handlePointerMove}
         onMouseLeave={() => setPointer({ x: 0, y: 0 })}
-        className="relative z-10 mx-auto flex min-h-screen w-full max-w-[900px] items-center justify-center px-6 py-24 sm:px-8 lg:px-10"
+        className="relative z-10 mx-auto flex min-h-screen w-full max-w-[1280px] items-center justify-center px-6 py-24 sm:px-8 lg:justify-start lg:px-12"
       >
         <motion.div
           animate={{ x: pointer.x * 0.45, y: pointer.y * 0.45 }}
           transition={{ type: "spring", stiffness: 100, damping: 18, mass: 0.2 }}
-          className="flex w-full flex-col items-center text-center"
+          className="flex w-full flex-col items-center text-center lg:max-w-[520px] lg:items-start lg:text-left xl:max-w-[600px]"
         >
           <motion.div
             initial={{ opacity: 0, y: 18 }}
@@ -68,7 +114,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.9 }}
-            className="mb-6 max-w-5xl px-4 py-4 sm:px-6 md:px-8 lg:px-10 text-[1.6rem] font-black leading-[1.2] tracking-[-0.04em] text-foreground sm:text-[2rem] md:text-[2.6rem] lg:text-[3.2rem] xl:text-[3.8rem]"
+            className="mb-6 max-w-5xl px-4 py-4 sm:px-6 md:px-8 lg:px-0 text-[1.6rem] font-black leading-[1.2] tracking-[-0.04em] text-foreground sm:text-[2rem] md:text-[2.6rem] lg:text-[3.2rem] xl:text-[3.8rem]"
           >
             <span className="block">Building the Future of</span>
             <span className="mt-2 block bg-[length:200%_100%] text-gradient-accent sm:mt-3">
