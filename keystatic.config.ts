@@ -46,8 +46,10 @@ export default config({
         coverImage: fields.image({
           label: "Cover Image",
           directory: "public/blog",
-          publicPath: "/blog/",
-          validation: { isRequired: true },
+          publicPath: "/blog",
+          validation: {
+            isRequired: false,
+          },
         }),
         author: fields.object(
           {
