@@ -31,8 +31,11 @@ export default function AuthenticationForm() {
       }
 
       const next = searchParams.get("next") || "/admin/blog/new";
-      router.replace(next.startsWith("/") ? next : "/admin/blog/new");
-      router.refresh();
+
+      // Give the browser one tick to persist the cookie
+      await new Promise((resolve) => setTimeout(resolve, 50));
+
+      window.location.href = next.startsWith("/") ? next : "/admin/blog/new";
     } catch {
       setError("Unable to sign in. Please try again.");
     } finally {
