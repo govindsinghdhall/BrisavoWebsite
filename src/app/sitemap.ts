@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/blog/constants";
-import { getAllPosts } from "@/lib/blog/posts";
+import { getAllBlogs } from "@/lib/blogs";
+import { SITE_URL } from "@/lib/site";
 
 const ROUTES = [
   "",
@@ -17,9 +17,8 @@ const ROUTES = [
   "/privacy",
 ];
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
-  const posts = await getAllPosts();
 
   const staticEntries: MetadataRoute.Sitemap = ROUTES.map((route) => ({
     url: `${SITE_URL}${route}`,
@@ -28,12 +27,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route === "" ? 1 : route === "/blog" ? 0.9 : 0.8,
   }));
 
-  const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${SITE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.publishedDate),
+  const blogEntries: MetadataRoute.Sitemap = getAllBlogs().map((blog) => ({
+    url: `${SITE_URL}/blog/${blog.slug}`,
+    lastModified: new Date(blog.date),
     changeFrequency: "monthly",
     priority: 0.7,
   }));
 
-  return [...staticEntries, ...postEntries];
+  return [...staticEntries, ...blogEntries];
 }

@@ -1,17 +1,19 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Clock } from "lucide-react";
-import { AuthorCard } from "@/components/blog/AuthorCard";
-import { CategoryBadge } from "@/components/blog/CategoryBadge";
-import { CoverImage } from "@/components/blog/CoverImage";
-import type { BlogPostMeta } from "@/lib/blog/types";
+import { ArrowRight, CalendarDays } from "lucide-react";
+import type { BlogMeta } from "@/types/blog";
+import { formatBlogDate } from "@/lib/blogs";
 import { cn } from "@/lib/utils";
 
 interface BlogCardProps {
-  post: BlogPostMeta;
+  blog: BlogMeta;
+  priority?: boolean;
   className?: string;
 }
 
-export function BlogCard({ post, className }: BlogCardProps) {
+export function BlogCard({ blog, priority = false, className }: BlogCardProps) {
+  const href = `/blog/${blog.slug}`;
+
   return (
     <article
       className={cn(
@@ -19,47 +21,51 @@ export function BlogCard({ post, className }: BlogCardProps) {
         className
       )}
     >
-      <Link href={`/blog/${post.slug}`} className="relative block aspect-[16/10] overflow-hidden">
-        <CoverImage
-          src={post.coverImage}
-          alt={post.title}
-          className="transition-transform duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, 33vw"
+      <Link
+        href={href}
+        className="relative block aspect-[16/10] overflow-hidden"
+        aria-label={blog.title}
+      >
+        <Image
+          src={blog.image}
+          alt={blog.title}
+          fill
+          priority={priority}
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-background/80 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-background/70 via-transparent to-transparent" />
       </Link>
 
       <div className="flex flex-1 flex-col gap-4 p-6">
         <div className="flex flex-wrap items-center gap-2">
-          <CategoryBadge
-            category={post.category}
-            href={`/blog?category=${post.category}`}
-          />
-          <span className="inline-flex items-center gap-1 text-xs text-muted">
-            <Clock className="h-3.5 w-3.5" />
-            {post.readingTime} min
+          <span className="inline-flex items-center rounded-full border border-accent-blue/20 bg-accent-blue/10 px-3 py-1 text-xs font-medium text-accent-blue">
+            {blog.category}
+          </span>
+          <span className="inline-flex items-center gap-1.5 text-xs text-muted">
+            <CalendarDays className="h-3.5 w-3.5" />
+            {formatBlogDate(blog.date)}
           </span>
         </div>
 
         <div className="space-y-2">
           <h3 className="text-xl font-semibold leading-snug tracking-tight text-foreground">
-            <Link href={`/blog/${post.slug}`} className="transition-colors hover:text-accent-blue">
-              {post.title}
+            <Link href={href} className="transition-colors hover:text-accent-blue">
+              {blog.title}
             </Link>
           </h3>
           <p className="line-clamp-3 text-sm leading-relaxed text-muted">
-            {post.excerpt}
+            {blog.description}
           </p>
         </div>
 
-        <div className="mt-auto flex items-center justify-between gap-3 pt-2">
-          <AuthorCard author={post.author} date={post.publishedDate} />
+        <div className="mt-auto pt-2">
           <Link
-            href={`/blog/${post.slug}`}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground/70 transition-colors hover:border-accent-blue/40 hover:text-accent-blue"
-            aria-label={`Read ${post.title}`}
+            href={href}
+            className="inline-flex items-center gap-2 text-sm font-medium text-accent-blue transition-opacity hover:opacity-80"
           >
-            <ArrowUpRight className="h-4 w-4" />
+            Read More
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>

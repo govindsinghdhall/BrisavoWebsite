@@ -23,5 +23,16 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "archive",
+    "src/server/auth",
+    "src/server/db",
+    "src/server/validators",
+    "src/server/helpers",
+    "src/server/index.ts*",
+    "src/types/auth.ts*",
+    "src/types/database.ts",
+    "src/types/index.ts*"
+  ]
 }

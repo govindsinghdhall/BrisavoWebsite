@@ -1,261 +1,163 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, CalendarDays, Clock, User } from "lucide-react";
+import { BlogContent } from "@/components/blog/BlogContent";
+import { RelatedPosts } from "@/components/blog/RelatedPosts";
 import {
-  AuthorCard,
-  BlogCard,
-  BlogLayout,
-  CategoryBadge,
-  CoverImage,
-  JsonLd,
-  MDXContent,
-  ReadingProgress,
-  ShareButtons,
-  TagBadge,
-  TOC,
-} from "@/components/blog";
-import { SITE_NAME, SITE_URL } from "@/lib/blog/constants";
-import {
-  getAdjacentPosts,
-  getAllPostSlugs,
-  getPostBySlug,
-  getRelatedPosts,
-} from "@/lib/blog/posts";
-import {
-  absoluteUrl,
-  buildArticleJsonLd,
-  buildBreadcrumbJsonLd,
-  buildFaqJsonLd,
-} from "@/lib/blog/seo";
-import { extractToc } from "@/lib/blog/toc";
+  formatBlogDate,
+  getAllBlogs,
+  getBlogBySlug,
+} from "@/lib/blogs";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const revalidate = 60;
 
-interface BlogPostPageProps {
-  params: Promise<{ slug: string }>;
+export function generateStaticParams() {
+  return getAllBlogs().map((blog) => ({ slug: blog.slug }));
 }
 
-export async function generateStaticParams() {
-  const slugs = await getAllPostSlugs();
-  return slugs.map((slug) => ({ slug }));
+interface BlogPostPageProps {
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const blog = await getBlogBySlug(slug);
 
-  if (!post) {
+  if (!blog) {
     return {
       title: `Post Not Found | ${SITE_NAME}`,
       robots: { index: false, follow: false },
     };
   }
 
-  const title = post.metaTitle || `${post.title} | ${SITE_NAME} Blog`;
-  const description =
-    post.metaDescription || post.description || post.excerpt;
-  const canonical = post.canonicalUrl || `${SITE_URL}/blog/${post.slug}`;
-  const image = absoluteUrl(post.ogImage || post.coverImage);
+  const title = blog.seoTitle || `${blog.title} | ${SITE_NAME} Blog`;
+  const description = blog.seoDescription || blog.description;
+  const canonical = `${SITE_URL}/blog/${blog.slug}`;
+  const imageUrl = blog.image.startsWith("http")
+    ? blog.image
+    : `${SITE_URL}${blog.image}`;
 
   return {
     title,
     description,
+    keywords: blog.tags,
+    authors: [{ name: blog.author }],
+    category: blog.category,
     alternates: {
       canonical,
     },
-    authors: [{ name: post.author.name }],
     openGraph: {
-      title,
+      type: "article",
+      title: blog.seoTitle || blog.title,
       description,
       url: canonical,
       siteName: SITE_NAME,
-      type: "article",
-      publishedTime: post.publishedDate,
-      authors: [post.author.name],
-      tags: post.tags,
+      publishedTime: blog.date,
+      authors: [blog.author],
+      tags: blog.tags,
       images: [
         {
-          url: image,
+          url: imageUrl,
           width: 1200,
           height: 630,
-          alt: post.title,
+          alt: blog.title,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: blog.seoTitle || blog.title,
       description,
-      images: [image],
-    },
-    robots: {
-      index: !post.draft,
-      follow: !post.draft,
+      images: [imageUrl],
     },
   };
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const blog = await getBlogBySlug(slug);
 
-  if (!post) {
+  if (!blog) {
     notFound();
   }
 
-  const [related, adjacent] = await Promise.all([
-    getRelatedPosts(slug, 3),
-    getAdjacentPosts(slug),
-  ]);
-
-  const headings = extractToc(post.content);
-  const shareUrl = absoluteUrl(post.canonicalUrl || `/blog/${post.slug}`);
-  const faqSchema = buildFaqJsonLd(post.faqs);
-
   return (
-    <>
-      <ReadingProgress />
-      <BlogLayout>
-        <JsonLd data={buildArticleJsonLd(post)} />
-        <JsonLd
-          data={buildBreadcrumbJsonLd([
-            { name: "Home", url: "/" },
-            { name: "Blog", url: "/blog" },
-            { name: post.title, url: `/blog/${post.slug}` },
-          ])}
-        />
-        {faqSchema ? <JsonLd data={faqSchema} /> : null}
+    <div className="relative overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 mesh-gradient opacity-60" />
 
-        <article id="blog-article" className="pb-8">
-          <div className="mb-8 flex flex-wrap items-center gap-3">
-            <CategoryBadge
-              category={post.category}
-              href={`/blog?category=${post.category}`}
-            />
-            {post.featured ? (
-              <span className="rounded-full border border-accent-violet/30 bg-accent-violet/10 px-3 py-1 text-xs font-medium text-accent-violet">
-                Featured
-              </span>
-            ) : null}
-          </div>
+      <article className="container-wide relative section-padding !pt-28 sm:!pt-32">
+        <Link
+          href="/blog"
+          className="mb-8 inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to Blog
+        </Link>
 
-          <h1 className="max-w-4xl text-4xl font-black tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            {post.title}
+        <header className="mx-auto max-w-3xl">
+          <span className="inline-flex items-center rounded-full border border-accent-blue/20 bg-accent-blue/10 px-3 py-1 text-xs font-medium text-accent-blue">
+            {blog.category}
+          </span>
+
+          <h1 className="mt-5 text-4xl font-black tracking-tight text-foreground sm:text-5xl">
+            {blog.title}
           </h1>
 
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-muted">
-            {post.excerpt}
-          </p>
+          <p className="mt-5 text-lg leading-8 text-muted">{blog.description}</p>
 
-          <div className="mt-8 flex flex-col gap-4 border-y border-border py-6 sm:flex-row sm:items-center sm:justify-between">
-            <AuthorCard
-              author={post.author}
-              date={post.publishedDate}
-              readingTime={post.readingTime}
-            />
-            <ShareButtons title={post.title} url={shareUrl} />
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-border py-5 text-sm text-muted">
+            <span className="inline-flex items-center gap-1.5">
+              <User className="h-4 w-4" />
+              {blog.author}
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <CalendarDays className="h-4 w-4" />
+              {formatBlogDate(blog.date)}
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Clock className="h-4 w-4" />
+              {blog.readingTime} min read
+            </span>
           </div>
 
-          <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-[2rem] border border-border">
-            <CoverImage
-              src={post.coverImage}
-              alt={post.title}
-              priority
-              sizes="100vw"
-            />
-          </div>
-
-          <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_280px]">
-            <div className="min-w-0">
-              <div className="prose-blog max-w-none">
-                <MDXContent source={post.content} />
-              </div>
-
-              {post.faqs.length > 0 ? (
-                <section className="mt-12 space-y-4">
-                  <h2 className="text-2xl font-bold tracking-tight text-foreground">
-                    Frequently asked questions
-                  </h2>
-                  <div className="space-y-3">
-                    {post.faqs.map((faq) => (
-                      <details
-                        key={faq.question}
-                        className="glass rounded-2xl px-5 py-4"
-                      >
-                        <summary className="cursor-pointer list-none font-medium text-foreground">
-                          {faq.question}
-                        </summary>
-                        <p className="mt-3 text-sm leading-7 text-muted">
-                          {faq.answer}
-                        </p>
-                      </details>
-                    ))}
-                  </div>
-                </section>
-              ) : null}
-
-              <div className="mt-10 flex flex-wrap gap-2">
-                {post.tags.map((tag) => (
-                  <TagBadge key={tag} tag={tag} href={`/blog?tag=${tag}`} />
-                ))}
-              </div>
-
-              <div className="mt-12 grid gap-4 border-t border-border pt-8 sm:grid-cols-2">
-                {adjacent.previous ? (
-                  <Link
-                    href={`/blog/${adjacent.previous.slug}`}
-                    className="glass group rounded-3xl p-5 transition-colors hover:bg-surface-hover"
-                  >
-                    <p className="mb-2 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted">
-                      <ArrowLeft className="h-3.5 w-3.5" />
-                      Previous
-                    </p>
-                    <p className="font-semibold text-foreground group-hover:text-accent-blue">
-                      {adjacent.previous.title}
-                    </p>
-                  </Link>
-                ) : (
-                  <div />
-                )}
-                {adjacent.next ? (
-                  <Link
-                    href={`/blog/${adjacent.next.slug}`}
-                    className="glass group rounded-3xl p-5 text-right transition-colors hover:bg-surface-hover sm:justify-self-end"
-                  >
-                    <p className="mb-2 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted sm:ml-auto">
-                      Next
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </p>
-                    <p className="font-semibold text-foreground group-hover:text-accent-blue">
-                      {adjacent.next.title}
-                    </p>
-                  </Link>
-                ) : null}
-              </div>
-            </div>
-
-            <aside className="lg:sticky lg:top-28 lg:self-start">
-              <TOC headings={headings} />
-            </aside>
-          </div>
-        </article>
-
-        {related.length > 0 ? (
-          <section className="mt-8 border-t border-border pt-12">
-            <h2 className="mb-6 text-2xl font-bold tracking-tight text-foreground">
-              Related posts
-            </h2>
-            <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-              {related.map((item) => (
-                <BlogCard key={item.slug} post={item} />
+          {blog.tags.length > 0 ? (
+            <div className="mt-5 flex flex-wrap gap-2">
+              {blog.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-border bg-surface px-2.5 py-1 text-xs text-foreground/70"
+                >
+                  #{tag}
+                </span>
               ))}
             </div>
-          </section>
-        ) : null}
-      </BlogLayout>
-    </>
+          ) : null}
+        </header>
+
+        <div className="relative mx-auto mt-10 aspect-[16/9] max-w-4xl overflow-hidden rounded-[2rem] border border-border">
+          <Image
+            src={blog.image}
+            alt={blog.title}
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 900px"
+            className="object-cover"
+          />
+        </div>
+
+        <div className="mx-auto mt-12 max-w-3xl">
+          <BlogContent html={blog.html} />
+        </div>
+
+        <div className="mx-auto max-w-5xl">
+          <RelatedPosts slug={blog.slug} />
+        </div>
+      </article>
+    </div>
   );
 }
