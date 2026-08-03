@@ -47,7 +47,7 @@ function CrmDashboardVisual({ priority = false }: { priority?: boolean }) {
           </div>
           <div className="ml-3 flex flex-1 items-center justify-center">
             <div className="rounded-full bg-background/80 px-4 py-1 text-[10px] font-mono text-muted tracking-wide">
-              app.brisavo.com / dashboard
+              app.brosavo.com / dashboard
             </div>
           </div>
         </div>

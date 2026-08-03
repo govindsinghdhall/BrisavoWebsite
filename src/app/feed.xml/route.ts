@@ -36,7 +36,7 @@ export function GET() {
   <channel>
     <title>${escapeXml(`${SITE_NAME} Blog`)}</title>
     <link>${SITE_URL}/blog</link>
-    <description>Insights on AI, cloud infrastructure, product engineering, and digital transformation from BRISΛVO.</description>
+    <description>Guides and research on real estate CRM, AI workflows, and agency growth from Brosavo.</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml" />

@@ -1,8 +1,8 @@
 export const USER_ROLES = ["admin", "editor", "author"] as const;
 
 export const AUTH_COOKIE_NAMES = {
-  accessToken: "brisavo_access_token",
-  refreshToken: "brisavo_refresh_token",
+  accessToken: "brosavo_access_token",
+  refreshToken: "brosavo_refresh_token",
 } as const;
 
 export const AUTH_TOKEN_EXPIRY_SECONDS = {

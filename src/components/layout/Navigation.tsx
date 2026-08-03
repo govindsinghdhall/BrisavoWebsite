@@ -52,10 +52,10 @@ export function Navigation() {
         >
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-8 h-8 overflow-hidden rounded-2xl bg-slate-950/5 border border-white/10 shadow-[0_0_40px_rgba(59,130,246,0.12)]">
-              <img src="/logo.svg" alt="BRISΛVO logo" className="h-full w-full object-cover" />
+              <img src="/logo.svg" alt="BROSAVO logo" className="h-full w-full object-cover" />
             </div>
             <span className="text-lg font-semibold tracking-wider">
-              BRIS<span style={{ color: "#5B74F6" }}>Λ</span>VO
+              BROS<span style={{ color: "#5B74F6" }}>Λ</span>VO
             </span>
           </Link>
 

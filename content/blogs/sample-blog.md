@@ -2,13 +2,13 @@
 title: "The Complete Sample Blog: Every Markdown Element in One Place"
 description: "A reference blog post demonstrating every supported Markdown element — headings, formatting, lists, tables, code, images, FAQs, and more."
 date: 2026-07-18
-author: BRISΛVO Editorial
+author: BROSAVO Editorial
 category: Engineering
 tags:
   - sample blog
   - markdown reference
   - content template
-  - brisavo blog
+  - brosavo blog
 image: /blog/sample-blog/cover.webp
 slug: sample-blog
 seoTitle: "The Complete Sample Blog: Every Markdown Element in One Place"
@@ -39,7 +39,7 @@ Inline formatting you can use anywhere in the body:
 - *Italic* with single asterisks
 - ***Bold and italic*** together
 - `inline code` with backticks
-- [A link](https://brisavo.com) with standard Markdown syntax
+- [A link](https://brosavo.com) with standard Markdown syntax
 
 ## Bulleted Lists
 
@@ -66,7 +66,7 @@ Blockquotes are useful for callouts and quotes:
 
 > Great software is built by teams who care about the details.
 >
-> — BRISΛVO Engineering
+> — BROSAVO Engineering
 
 ## Code Block
 

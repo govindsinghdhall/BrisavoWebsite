@@ -2,7 +2,7 @@ export const PRIVACY_SECTIONS = [
   {
     title: "Introduction",
     content: [
-      "BRISΛVO Technologies (\"BRISΛVO\", \"we\", \"us\", or \"our\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website BRISΛVO.com or engage our services.",
+      "BROSAVO Technologies (\"BROSAVO\", \"we\", \"us\", or \"our\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website brosavo.com or engage our services.",
       "By using our website or services, you consent to the practices described in this policy.",
     ],
   },
@@ -35,13 +35,13 @@ export const PRIVACY_SECTIONS = [
   {
     title: "Your Rights",
     content: [
-      "Depending on your jurisdiction, you may have rights to access, correct, delete, or restrict processing of your personal data. Contact us at hellobrisavo@gmail.com to exercise these rights.",
+      "Depending on your jurisdiction, you may have rights to access, correct, delete, or restrict processing of your personal data. Contact us at hellobrosavo@gmail.com to exercise these rights.",
     ],
   },
   {
     title: "Contact Us",
     content: [
-      "For privacy-related questions, contact us at hellobrisavo@gmail.com or call +1 236 818 4654 (Canada) / +91 99991 07733 (India).",
+      "For privacy-related questions, contact us at hellobrosavo@gmail.com or call +1 236 818 4654 (Canada) / +91 99991 07733 (India).",
     ],
   },
 ] as const;
@@ -50,20 +50,20 @@ export const TERMS_SECTIONS = [
   {
     title: "Agreement to Terms",
     content: [
-      "These Terms and Conditions (\"Terms\") govern your use of the BRISΛVO website (BRISΛVO.com) and any services provided by BRISΛVO Technologies. By accessing our website or engaging our services, you agree to be bound by these Terms.",
+      "These Terms and Conditions (\"Terms\") govern your use of the BROSAVO website (brosavo.com) and any services provided by BROSAVO Technologies. By accessing our website or engaging our services, you agree to be bound by these Terms.",
     ],
   },
   {
     title: "Services",
     content: [
-      "BRISΛVO provides technology consulting, software development, AI solutions, and related professional services. Specific deliverables, timelines, and fees are defined in individual service agreements or statements of work.",
+      "BROSAVO provides technology consulting, software development, AI solutions, and related professional services. Specific deliverables, timelines, and fees are defined in individual service agreements or statements of work.",
     ],
   },
   {
     title: "Intellectual Property",
     content: [
-      "Unless otherwise agreed in writing, intellectual property created specifically for a client under a signed agreement shall be transferred to the client upon full payment. BRISΛVO retains rights to pre-existing tools, frameworks, and general know-how.",
-      "All content on this website, including text, graphics, logos, and software, is the property of BRISΛVO Technologies and protected by applicable intellectual property laws.",
+      "Unless otherwise agreed in writing, intellectual property created specifically for a client under a signed agreement shall be transferred to the client upon full payment. BROSAVO retains rights to pre-existing tools, frameworks, and general know-how.",
+      "All content on this website, including text, graphics, logos, and software, is the property of BROSAVO Technologies and protected by applicable intellectual property laws.",
     ],
   },
   {
@@ -75,7 +75,7 @@ export const TERMS_SECTIONS = [
   {
     title: "Limitation of Liability",
     content: [
-      "To the maximum extent permitted by law, BRISΛVO shall not be liable for indirect, incidental, special, or consequential damages arising from use of our website or services. Our total liability is limited to the fees paid for the specific service giving rise to the claim.",
+      "To the maximum extent permitted by law, BROSAVO shall not be liable for indirect, incidental, special, or consequential damages arising from use of our website or services. Our total liability is limited to the fees paid for the specific service giving rise to the claim.",
     ],
   },
   {
@@ -93,7 +93,7 @@ export const TERMS_SECTIONS = [
   {
     title: "Contact",
     content: [
-      "For questions about these Terms, contact hellobrisavo@gmail.com or +1 236 818 4654 (Canada) / +91 99991 07733 (India).",
+      "For questions about these Terms, contact hellobrosavo@gmail.com or +1 236 818 4654 (Canada) / +91 99991 07733 (India).",
     ],
   },
 ] as const;

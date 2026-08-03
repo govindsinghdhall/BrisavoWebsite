@@ -3,7 +3,7 @@ import { PageHero } from "@/components/layout/PageHero";
 import { Products } from "@/components/sections/Products";
 
 export const metadata: Metadata = {
-  title: "Products — BRISΛVO",
+  title: "Products — BROSAVO",
   description:
     "Flagship Real Estate Property Management CRM with contacts, leads, bookings, site visits, roles, reporting, and WhatsApp marketing — plus supporting enterprise platforms.",
 };

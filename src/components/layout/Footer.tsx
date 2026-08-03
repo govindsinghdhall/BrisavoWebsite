@@ -38,9 +38,9 @@ export function Footer() {
           <div className="col-span-2 md:col-span-3 lg:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-6">
               <div className="relative w-8 h-8 overflow-hidden rounded-2xl bg-slate-950/5 border border-white/10 shadow-[0_0_40px_rgba(59,130,246,0.12)]">
-                <img src="/logo.svg" alt="BRISΛVO logo" className="h-full w-full object-cover" />
+                <img src="/logo.svg" alt="BROSAVO logo" className="h-full w-full object-cover" />
               </div>
-              <span className="text-lg font-semibold">BRISΛVO</span>
+              <span className="text-lg font-semibold">BROSAVO</span>
             </Link>
             <p className="text-sm text-muted leading-relaxed mb-4 max-w-xs">
               Global technology company engineering mission-critical software, AI products, and digital infrastructure worldwide.
@@ -105,7 +105,7 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted">
-            © {new Date().getFullYear()} BRISΛVO Technologies. Global Technology Company.
+            © {new Date().getFullYear()} BROSAVO Technologies. Global Technology Company.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
@@ -140,7 +140,7 @@ export function Footer() {
                 key={i}
                 className="text-[8vw] md:text-[6vw] font-bold text-foreground/[0.03] mx-8 select-none"
               >
-                BRISΛVO
+                BROSAVO
               </span>
             ))}
           </motion.div>

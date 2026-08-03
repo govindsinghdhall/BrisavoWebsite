@@ -1,7 +1,7 @@
 export const BLOG_ADMIN_COOKIE = "blog_admin_session";
 
 const COOKIE_MAX_AGE_SECONDS = 60 * 60 * 24 * 7; // 7 days
-const TOKEN_MESSAGE = "brisavo-blog-admin-v1";
+const TOKEN_MESSAGE = "brosavo-blog-admin-v1";
 
 function getPassword(): string {
   const password = process.env.BLOG_ADMIN_PASSWORD;

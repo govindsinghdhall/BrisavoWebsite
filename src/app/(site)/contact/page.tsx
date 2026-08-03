@@ -3,8 +3,8 @@ import { PageHero } from "@/components/layout/PageHero";
 import { Contact } from "@/components/sections/Contact";
 
 export const metadata: Metadata = {
-  title: "Contact — BRISΛVO",
-  description: "Get in touch with BRISΛVO. Canada: +1 236 818 4654 · India: +91 99991 07733 · hellobrisavo@gmail.com",
+  title: "Contact — BROSAVO",
+  description: "Get in touch with BROSAVO. Canada: +1 236 818 4654 · India: +91 99991 07733 · hellobrosavo@gmail.com",
 };
 
 export default function ContactPage() {

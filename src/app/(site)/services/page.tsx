@@ -3,7 +3,7 @@ import { PageHero } from "@/components/layout/PageHero";
 import { Services } from "@/components/sections/Services";
 
 export const metadata: Metadata = {
-  title: "Services — BRISΛVO",
+  title: "Services — BROSAVO",
   description: "AI, software development, SaaS, enterprise systems, cloud infrastructure, and digital transformation at global scale.",
 };
 

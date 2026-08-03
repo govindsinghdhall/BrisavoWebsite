@@ -1,5 +1,10 @@
 import { z } from "zod";
 
+const faqSchema = z.object({
+  question: z.string().min(3),
+  answer: z.string().min(3),
+});
+
 export const loginSchema = z.object({
   password: z.string().min(1, "Password is required"),
 });
@@ -15,8 +20,11 @@ export const publishBlogSchema = z.object({
   author: z.string().min(2, "Author is required"),
   tags: z.union([z.string(), z.array(z.string())]).optional(),
   image: z.string().min(1, "Image URL is required"),
+  imageAlt: z.string().optional(),
   seoTitle: z.string().optional(),
   seoDescription: z.string().optional(),
+  keyTakeaways: z.union([z.string(), z.array(z.string())]).optional(),
+  faqs: z.array(faqSchema).optional(),
   markdown: z.string().min(20, "Markdown content is required"),
 });
 
@@ -33,8 +41,10 @@ export const publishBlogFormSchema = z.object({
   author: z.string().min(2, "Author is required"),
   tags: z.string().optional(),
   image: z.string().min(1, "Image URL is required"),
+  imageAlt: z.string().optional(),
   seoTitle: z.string().optional(),
   seoDescription: z.string().optional(),
+  keyTakeaways: z.string().optional(),
   markdown: z.string().min(20, "Markdown content is required"),
 });
 
@@ -50,5 +60,18 @@ export function normalizeTagsInput(
   return tags
     .split(",")
     .map((tag) => tag.trim())
+    .filter(Boolean);
+}
+
+export function normalizeTakeawaysInput(
+  value: string | string[] | undefined
+): string[] {
+  if (!value) return [];
+  if (Array.isArray(value)) {
+    return value.map((item) => item.trim()).filter(Boolean);
+  }
+  return value
+    .split(/\n/)
+    .map((item) => item.replace(/^[-*]\s*/, "").trim())
     .filter(Boolean);
 }

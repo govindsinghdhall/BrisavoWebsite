@@ -5,12 +5,19 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import slugify from "slugify";
 import { CheckCircle2, Loader2, XCircle } from "lucide-react";
+import { AUTHOR_OPTIONS } from "@/lib/authors";
 import {
   normalizeTagsInput,
+  normalizeTakeawaysInput,
   publishBlogFormSchema,
   type PublishBlogFormValues,
   type PublishBlogInput,
 } from "@/lib/blog-schema";
+import {
+  BLOG_CONTENT_TEMPLATE,
+  BLOG_TITLE_SUFFIX,
+  DEFAULT_BLOG_COVER,
+} from "@/lib/site";
 
 type ToastState =
   | { type: "success"; message: string }
@@ -35,12 +42,14 @@ export default function NewBlogAdminPage() {
       slug: "",
       description: "",
       category: "Real Estate Tech",
-      author: "BRISΛVO Editorial",
+      author: "Govind Dhall",
       tags: "",
-      image: "/blog/sample-blog/cover.webp",
+      image: DEFAULT_BLOG_COVER,
+      imageAlt: "",
       seoTitle: "",
       seoDescription: "",
-      markdown: "## Introduction\n\nWrite your blog content in Markdown...",
+      keyTakeaways: "",
+      markdown: BLOG_CONTENT_TEMPLATE,
     },
   });
 
@@ -70,7 +79,9 @@ export default function NewBlogAdminPage() {
       const payload: PublishBlogInput = {
         ...values,
         tags: normalizeTagsInput(values.tags),
-        seoTitle: values.seoTitle || values.title,
+        keyTakeaways: normalizeTakeawaysInput(values.keyTakeaways),
+        imageAlt: values.imageAlt || values.title,
+        seoTitle: values.seoTitle || `${values.title}${BLOG_TITLE_SUFFIX}`,
         seoDescription: values.seoDescription || values.description,
       };
 
@@ -140,7 +151,7 @@ export default function NewBlogAdminPage() {
               <input
                 {...register("title")}
                 className={fieldClass}
-                placeholder="How to Buy Property in Gurgaon"
+                placeholder="15 Benefits of a Real Estate CRM"
               />
               {errors.title ? (
                 <span className="mt-1 block text-xs text-red-500">
@@ -154,7 +165,7 @@ export default function NewBlogAdminPage() {
               <input
                 {...register("slug")}
                 className={fieldClass}
-                placeholder="how-to-buy-property"
+                placeholder="real-estate-crm-benefits"
                 onChange={(event) => {
                   setSlugManual(true);
                   setValue("slug", event.target.value, { shouldValidate: true });
@@ -169,7 +180,7 @@ export default function NewBlogAdminPage() {
           </div>
 
           <label className={labelClass}>
-            Description
+            Meta Description (150–160 characters)
             <textarea
               {...register("description")}
               rows={3}
@@ -189,7 +200,7 @@ export default function NewBlogAdminPage() {
               <input
                 {...register("category")}
                 className={fieldClass}
-                placeholder="Real Estate"
+                placeholder="Real Estate Tech"
               />
               {errors.category ? (
                 <span className="mt-1 block text-xs text-red-500">
@@ -200,11 +211,13 @@ export default function NewBlogAdminPage() {
 
             <label className={labelClass}>
               Author
-              <input
-                {...register("author")}
-                className={fieldClass}
-                placeholder="Govind Singh Dhall"
-              />
+              <select {...register("author")} className={fieldClass}>
+                {AUTHOR_OPTIONS.map((author) => (
+                  <option key={author.value} value={author.value}>
+                    {author.label}
+                  </option>
+                ))}
+              </select>
               {errors.author ? (
                 <span className="mt-1 block text-xs text-red-500">
                   {errors.author.message}
@@ -219,16 +232,16 @@ export default function NewBlogAdminPage() {
               <input
                 {...register("tags")}
                 className={fieldClass}
-                placeholder="Property, Investment, CRM"
+                placeholder="real estate CRM, lead management, automation"
               />
             </label>
 
             <label className={labelClass}>
-              Image URL
+              Cover Image Path
               <input
                 {...register("image")}
                 className={fieldClass}
-                placeholder="/blog/my-post/cover.webp"
+                placeholder="/images/blog/real-estate-crm-benefits.webp"
               />
               {errors.image ? (
                 <span className="mt-1 block text-xs text-red-500">
@@ -238,13 +251,22 @@ export default function NewBlogAdminPage() {
             </label>
           </div>
 
+          <label className={labelClass}>
+            Cover Image Alt Text
+            <input
+              {...register("imageAlt")}
+              className={fieldClass}
+              placeholder="Brosavo Real Estate CRM dashboard showing lead pipeline and sales analytics."
+            />
+          </label>
+
           <div className="grid gap-6 md:grid-cols-2">
             <label className={labelClass}>
               SEO Title
               <input
                 {...register("seoTitle")}
                 className={fieldClass}
-                placeholder="Optional — defaults to Title"
+                placeholder={`Optional — defaults to Title${BLOG_TITLE_SUFFIX}`}
               />
             </label>
 
@@ -253,18 +275,28 @@ export default function NewBlogAdminPage() {
               <input
                 {...register("seoDescription")}
                 className={fieldClass}
-                placeholder="Optional — defaults to Description"
+                placeholder="Optional — defaults to Meta Description"
               />
             </label>
           </div>
 
           <label className={labelClass}>
+            Key Takeaways (one per line)
+            <textarea
+              {...register("keyTakeaways")}
+              rows={5}
+              className={fieldClass}
+              placeholder={"A Real Estate CRM centralizes leads...\nAutomation reduces manual follow-ups..."}
+            />
+          </label>
+
+          <label className={labelClass}>
             Markdown Content
             <textarea
               {...register("markdown")}
-              rows={18}
+              rows={22}
               className={`${fieldClass} font-mono text-[13px] leading-6`}
-              placeholder="## Introduction&#10;&#10;Your content..."
+              placeholder="Follow the standard Brosavo blog template..."
             />
             {errors.markdown ? (
               <span className="mt-1 block text-xs text-red-500">

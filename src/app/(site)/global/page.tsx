@@ -4,7 +4,7 @@ import { GlobalPresence } from "@/components/sections/GlobalPresence";
 import { ScrollStory } from "@/components/sections/ScrollStory";
 
 export const metadata: Metadata = {
-  title: "Global Presence — BRISΛVO",
+  title: "Global Presence — BROSAVO",
   description: "Engineering across continents. Canada × India technology network delivering global delivery with local expertise.",
 };
 

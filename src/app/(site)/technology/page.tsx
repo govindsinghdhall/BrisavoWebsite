@@ -3,7 +3,7 @@ import { PageHero } from "@/components/layout/PageHero";
 import { TechUniverse } from "@/components/sections/TechUniverse";
 
 export const metadata: Metadata = {
-  title: "Technology — BRISΛVO",
+  title: "Technology — BROSAVO",
   description: "A living technology ecosystem — 65+ production-proven technologies powering enterprise solutions worldwide.",
 };
 

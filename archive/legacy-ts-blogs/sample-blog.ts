@@ -35,7 +35,7 @@ export const sampleBlog: Blog = {
   excerpt:
     "Use this post as a template. It shows exactly how to structure content sections and which Markdown features are supported.",
   author: {
-    name: "BRISΛVO Editorial",
+    name: "BROSAVO Editorial",
     role: "Content Team",
     avatar: "/blog/authors/editorial.png",
   },
@@ -48,7 +48,7 @@ export const sampleBlog: Blog = {
     "sample blog",
     "markdown reference",
     "content template",
-    "brisavo blog",
+    "brosavo blog",
   ],
   content: [
     {
@@ -80,7 +80,7 @@ export const sampleBlog: Blog = {
         "- *Italic* with single asterisks",
         "- ***Bold and italic*** together",
         "- `inline code` with backticks",
-        "- [A link](https://brisavo.com) with standard Markdown syntax",
+        "- [A link](https://brosavo.com) with standard Markdown syntax",
       ].join("\n"),
     },
     {
@@ -113,7 +113,7 @@ export const sampleBlog: Blog = {
         "",
         "> Great software is built by teams who care about the details.",
         ">",
-        "> — BRISΛVO Engineering",
+        "> — BROSAVO Engineering",
       ].join("\n"),
     },
     {

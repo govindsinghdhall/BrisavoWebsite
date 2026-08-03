@@ -22,7 +22,7 @@ export function Testimonials() {
         <SectionHeader
           label="Client Stories"
           title="Voices Of Global Impact"
-          description="Leaders worldwide trust BRISΛVO to engineer their most critical technology."
+          description="Leaders worldwide trust BROSAVO to engineer their most critical technology."
           align="center"
           compact
         />

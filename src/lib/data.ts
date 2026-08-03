@@ -1,8 +1,8 @@
 export const CONTACT = {
-  email: "hellobrisavo@gmail.com",
+  email: "hellobrosavo@gmail.com",
   instagram: {
-    handle: "hellobrisavo",
-    href: "https://www.instagram.com/hellobrisavo/",
+    handle: "hellobrosavo",
+    href: "https://www.instagram.com/hellobrosavo/",
   },
   phones: [
     { label: "Canada", number: "+1 236 818 4654", href: "tel:+12368184654", flag: "🇨🇦" },
@@ -75,7 +75,7 @@ export const WHY_US = [
   },
   {
     title: "Proven at Scale",
-    description: "150+ enterprise clients across 30 countries trust BRISΛVO for platforms handling millions of daily transactions.",
+    description: "150+ enterprise clients across 30 countries trust BROSAVO for platforms handling millions of daily transactions.",
     icon: "chart",
   },
 ] as const;
@@ -135,7 +135,7 @@ export const FOUNDERS = [
   {
     name: "Founder & CEO",
     title: "Chief Executive Officer",
-    bio: "Visionary leader driving BRISΛVO's global expansion and strategic partnerships. Passionate about building technology that transforms how businesses operate at international scale.",
+    bio: "Visionary leader driving BROSAVO's global expansion and strategic partnerships. Passionate about building technology that transforms how businesses operate at international scale.",
     focus: ["Global Strategy", "Enterprise Partnerships", "Company Vision"],
     avatar: "CEO",
     location: "Vancouver, Canada",
@@ -143,7 +143,7 @@ export const FOUNDERS = [
   {
     name: "Co-Founder & CTO",
     title: "Chief Technology Officer",
-    bio: "Technical architect behind BRISΛVO's engineering excellence. Leads AI research, platform architecture, and the Canada-India delivery network that powers 24/7 development.",
+    bio: "Technical architect behind BROSAVO's engineering excellence. Leads AI research, platform architecture, and the Canada-India delivery network that powers 24/7 development.",
     focus: ["AI & Platform Architecture", "Engineering Culture", "Technical Strategy"],
     avatar: "CTO",
     location: "Gurugram, India",
@@ -272,7 +272,7 @@ export const FEATURED_PRODUCT = {
     "Built with a modern React + TypeScript frontend and a Node.js + Express + MongoDB backend, this platform combines operational CRM workflows with marketing tools so real estate businesses can manage relationships and outreach from a single system.",
   color: "#3b82f6",
   image: "/products/real-estate-crm-dashboard.png",
-  imageAlt: "BRISΛVO Real Estate CRM dashboard showing properties, revenue, occupancy, and maintenance",
+  imageAlt: "BROSAVO Real Estate CRM dashboard showing properties, revenue, occupancy, and maintenance",
   stack: ["React", "TypeScript", "Node.js", "Express", "MongoDB"],
   metrics: ["Multi-tenant", "JWT auth", "WhatsApp API", "Role-based access"],
   capabilities: [
@@ -376,7 +376,7 @@ export const METRICS = [
 export const TESTIMONIALS = [
   {
     id: "1",
-    quote: "BRISΛVO transformed our entire digital infrastructure. Their engineering team delivered a platform that handles millions of transactions daily with zero downtime.",
+    quote: "BROSAVO transformed our entire digital infrastructure. Their engineering team delivered a platform that handles millions of transactions daily with zero downtime.",
     author: "Sarah Chen",
     role: "CTO, FinScale Global",
     company: "FinScale",
@@ -394,7 +394,7 @@ export const TESTIMONIALS = [
   },
   {
     id: "3",
-    quote: "Working with BRISΛVO feels like having an elite in-house engineering team. Their Canada-India delivery model gives us 24/7 development velocity.",
+    quote: "Working with BROSAVO feels like having an elite in-house engineering team. Their Canada-India delivery model gives us 24/7 development velocity.",
     author: "Michael Torres",
     role: "CEO, CloudBridge Systems",
     company: "CloudBridge",
@@ -403,7 +403,7 @@ export const TESTIMONIALS = [
   },
   {
     id: "4",
-    quote: "From concept to production in 8 weeks. The BRISΛVO CRM platform now powers our entire sales organization across 15 countries.",
+    quote: "From concept to production in 8 weeks. The BROSAVO CRM platform now powers our entire sales organization across 15 countries.",
     author: "Emily Watson",
     role: "Director of Sales Ops, Meridian",
     company: "Meridian",
@@ -413,7 +413,7 @@ export const TESTIMONIALS = [
 ] as const;
 
 export const TIMELINE = [
-  { year: "2018", title: "Founded", description: "BRISΛVO established with a vision for global technology excellence" },
+  { year: "2018", title: "Founded", description: "BROSAVO established with a vision for global technology excellence" },
   { year: "2020", title: "India Expansion", description: "Engineering center launched in Gurugram" },
   { year: "2022", title: "AI Division", description: "Dedicated AI research and product engineering team" },
   { year: "2024", title: "Enterprise Scale", description: "150+ enterprise clients across 30 countries" },

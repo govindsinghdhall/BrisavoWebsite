@@ -8,9 +8,11 @@ import {
 } from "@/lib/blogs";
 import {
   normalizeTagsInput,
+  normalizeTakeawaysInput,
   publishBlogSchema,
 } from "@/lib/blog-schema";
 import { GitHubPublishError, publishBlogToGitHub } from "@/lib/github";
+import { BLOG_TITLE_SUFFIX } from "@/lib/site";
 
 export async function POST(request: Request) {
   try {
@@ -40,7 +42,9 @@ export async function POST(request: Request) {
     const data = parsed.data;
     const slug = slugify(data.slug, { lower: true, strict: true });
     const tags = normalizeTagsInput(data.tags);
+    const keyTakeaways = normalizeTakeawaysInput(data.keyTakeaways);
     const date = new Date().toISOString().slice(0, 10);
+    const title = data.title.trim();
 
     if (blogFileExists(slug)) {
       return NextResponse.json(
@@ -50,16 +54,21 @@ export async function POST(request: Request) {
     }
 
     const markdown = buildMarkdownDocument({
-      title: data.title.trim(),
+      title,
       description: data.description.trim(),
       date,
+      updatedAt: date,
       author: data.author.trim(),
       category: data.category.trim(),
       tags,
       image: data.image.trim(),
+      imageAlt: data.imageAlt?.trim() || title,
       slug,
-      seoTitle: data.seoTitle?.trim() || data.title.trim(),
+      seoTitle:
+        data.seoTitle?.trim() || `${title}${BLOG_TITLE_SUFFIX}`,
       seoDescription: data.seoDescription?.trim() || data.description.trim(),
+      keyTakeaways,
+      faqs: data.faqs,
       markdown: data.markdown,
     });
 

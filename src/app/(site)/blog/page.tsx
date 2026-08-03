@@ -1,30 +1,41 @@
 import type { Metadata } from "next";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { getAllBlogs } from "@/lib/blogs";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import {
+  COMPANY_DESCRIPTION,
+  DEFAULT_OG_IMAGE,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site";
 
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: `Blog — Insights on AI, Cloud & Product | ${SITE_NAME}`,
-  description:
-    "Explore BRISΛVO insights on AI-native systems, cloud infrastructure, real estate technology, and product engineering.",
+  title: `Blog | ${SITE_NAME}`,
+  description: COMPANY_DESCRIPTION.slice(0, 158),
   alternates: {
     canonical: `${SITE_URL}/blog`,
   },
   openGraph: {
     title: `Blog | ${SITE_NAME}`,
-    description:
-      "AI, cloud, CRM, and engineering insights from the BRISΛVO global technology team.",
+    description: COMPANY_DESCRIPTION.slice(0, 158),
     url: `${SITE_URL}/blog`,
     siteName: SITE_NAME,
     type: "website",
+    images: [
+      {
+        url: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} Blog`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `Blog | ${SITE_NAME}`,
-    description:
-      "AI, cloud, CRM, and engineering insights from the BRISΛVO global technology team.",
+    description: COMPANY_DESCRIPTION.slice(0, 158),
+    images: [`${SITE_URL}${DEFAULT_OG_IMAGE}`],
   },
 };
 
@@ -41,11 +52,11 @@ export default function BlogPage() {
             Insights
           </p>
           <h1 className="text-4xl font-black tracking-tight text-foreground sm:text-5xl">
-            BRISΛVO Blog
+            Brosavo Blog
           </h1>
           <p className="mt-4 text-base leading-8 text-muted sm:text-lg">
-            Practical thinking on AI, cloud infrastructure, product engineering,
-            and the systems that help ambitious businesses scale.
+            Guides, research, and best practices on real estate CRM, AI
+            workflows, and the systems that help agencies grow.
           </p>
         </header>
 
