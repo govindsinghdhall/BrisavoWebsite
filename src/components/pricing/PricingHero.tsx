@@ -39,7 +39,7 @@ export function PricingHero() {
           </div>
 
           <p className="mt-5 text-sm text-muted">
-            No credit card required · Cancel anytime ·{" "}
+            14-day free trial · No credit card required · Cancel anytime ·{" "}
             <Link
               href="#compare"
               className="font-medium text-accent-blue transition-opacity hover:opacity-80"

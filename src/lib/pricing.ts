@@ -1,21 +1,37 @@
+import type { CurrencyCode } from "@/lib/currency";
+import { formatPrice } from "@/lib/currency";
+
 export type BillingPeriod = "monthly" | "yearly";
+
+export interface PricingFeatureItem {
+  feature: string;
+  benefit: string;
+  included: boolean;
+}
 
 export interface PricingPlan {
   id: string;
   name: string;
+  tagline: string;
   description: string;
   monthlyPrice: number | null;
+  originalPrice: number | null;
+  launchPrice: number | null;
+  discount: number | null;
   ctaLabel: string;
   ctaHref: string;
   popular?: boolean;
-  features: string[];
   featureIntro?: string;
+  features: PricingFeatureItem[];
+  /** Flat feature labels for legacy compare / JSON-LD helpers */
+  featureLabels: string[];
 }
 
 export interface WebsiteAddon {
   id: string;
   name: string;
   priceLabel: string;
+  priceInr?: number | null;
   priceNote?: string;
   features: string[];
   highlighted?: boolean;
@@ -33,38 +49,75 @@ export interface CompareRow {
 export const YEARLY_DISCOUNT = 0.2;
 
 export function formatInr(amount: number): string {
-  return new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-    maximumFractionDigits: 0,
-  }).format(amount);
+  return formatPrice(amount, "INR");
 }
 
 export function getPlanPrice(
   monthlyPrice: number | null,
-  period: BillingPeriod
-): { display: string; suffix: string } {
+  period: BillingPeriod,
+  currency: CurrencyCode = "INR"
+): { display: string; suffix: string; amount: number | null } {
   if (monthlyPrice === null) {
-    return { display: "Custom", suffix: "" };
+    return { display: "Custom", suffix: "", amount: null };
   }
 
-  if (period === "yearly") {
-    const yearlyMonthly = Math.round(monthlyPrice * (1 - YEARLY_DISCOUNT));
-    return { display: formatInr(yearlyMonthly), suffix: "/ month" };
-  }
+  const amount =
+    period === "yearly"
+      ? Math.round(monthlyPrice * (1 - YEARLY_DISCOUNT))
+      : monthlyPrice;
 
-  return { display: formatInr(monthlyPrice), suffix: "/ month" };
+  return {
+    display: formatPrice(amount, currency),
+    suffix: "/ month",
+    amount,
+  };
 }
 
 export const PRICING_PLANS: PricingPlan[] = [
   {
     id: "starter",
     name: "Starter",
-    description: "Perfect for individual agents.",
+    tagline: "Everything you need to start selling",
+    description:
+      "Perfect for individual agents getting started with professional real estate tools.",
     monthlyPrice: 999,
-    ctaLabel: "Start Free Trial",
+    originalPrice: 1499,
+    launchPrice: 999,
+    discount: 33,
+    ctaLabel: "Start Free 14-Day Trial",
     ctaHref: "/contact?plan=starter",
+    popular: false,
+    featureIntro: "Essential tools to launch your real estate business",
     features: [
+      {
+        feature: "Professional Website",
+        benefit:
+          "Get a stunning, mobile-optimized website with property listings and lead capture forms",
+        included: true,
+      },
+      {
+        feature: "Smart CRM",
+        benefit: "Track every lead, property, and deal in one unified pipeline",
+        included: true,
+      },
+      {
+        feature: "Lead Management",
+        benefit:
+          "Capture, track, and convert unlimited leads from multiple channels",
+        included: true,
+      },
+      {
+        feature: "WhatsApp Notifications",
+        benefit: "Instant notifications to never miss a lead inquiry",
+        included: true,
+      },
+      {
+        feature: "Email Support",
+        benefit: "Get help when you need it with dedicated email support",
+        included: true,
+      },
+    ],
+    featureLabels: [
       "1 User",
       "CRM",
       "Lead Management",
@@ -80,13 +133,58 @@ export const PRICING_PLANS: PricingPlan[] = [
   {
     id: "professional",
     name: "Professional",
-    description: "Built for growing brokerages and teams.",
+    tagline: "Scale your real estate business",
+    description:
+      "Built for growing brokerages and teams who want to dominate their market.",
     monthlyPrice: 2499,
-    ctaLabel: "Start Growing",
+    originalPrice: 3499,
+    launchPrice: 2499,
+    discount: 28,
+    ctaLabel: "Start Free 14-Day Trial",
     ctaHref: "/contact?plan=professional",
     popular: true,
-    featureIntro: "Everything in Starter, plus",
+    featureIntro: "Everything in Starter, plus powerful growth tools",
     features: [
+      {
+        feature: "Advanced Website Suite",
+        benefit:
+          "Blog, SEO tools, property portal integration, and Google Maps to attract more buyers",
+        included: true,
+      },
+      {
+        feature: "Team Collaboration",
+        benefit:
+          "5 users with role permissions and task management for seamless teamwork",
+        included: true,
+      },
+      {
+        feature: "WhatsApp API Integration",
+        benefit: "Automated messaging and engagement at scale",
+        included: true,
+      },
+      {
+        feature: "Marketing Automation",
+        benefit:
+          "Email campaigns, follow-up reminders, and automated workflows",
+        included: true,
+      },
+      {
+        feature: "Advanced Analytics",
+        benefit: "Data-driven insights to optimize your sales process",
+        included: true,
+      },
+      {
+        feature: "Call Tracking",
+        benefit: "Know which marketing channels are generating calls",
+        included: true,
+      },
+      {
+        feature: "Priority Support",
+        benefit: "Get answers faster with priority support channel",
+        included: true,
+      },
+    ],
+    featureLabels: [
       "Unlimited Leads",
       "5 Users",
       "Automation",
@@ -111,12 +209,56 @@ export const PRICING_PLANS: PricingPlan[] = [
   {
     id: "enterprise",
     name: "Enterprise",
-    description: "For multi-branch agencies and developers.",
+    tagline: "Unlimited power for large organizations",
+    description:
+      "For multi-branch agencies and developers building at scale.",
     monthlyPrice: null,
-    ctaLabel: "Talk to Sales",
+    originalPrice: null,
+    launchPrice: null,
+    discount: null,
+    ctaLabel: "Book Live Demo",
     ctaHref: "/contact?plan=enterprise",
-    featureIntro: "Everything in Professional, plus",
+    popular: false,
+    featureIntro: "Everything in Professional, plus enterprise capabilities",
     features: [
+      {
+        feature: "Unlimited Everything",
+        benefit:
+          "Unlimited users, websites, and branches with enterprise-grade infrastructure",
+        included: true,
+      },
+      {
+        feature: "Custom Integrations",
+        benefit:
+          "Connect with your existing tools via API access and custom workflows",
+        included: true,
+      },
+      {
+        feature: "White Label Solutions",
+        benefit:
+          "Brand the platform as your own with complete customization",
+        included: true,
+      },
+      {
+        feature: "Dedicated Account Manager",
+        benefit:
+          "Strategic guidance and priority support from your personal account manager",
+        included: true,
+      },
+      {
+        feature: "Advanced Security",
+        benefit:
+          "SSO, advanced permissions, and enterprise-grade data protection",
+        included: true,
+      },
+      {
+        feature: "Data Migration",
+        benefit:
+          "Seamless migration from your existing CRM with zero data loss",
+        included: true,
+      },
+    ],
+    featureLabels: [
       "Unlimited Users",
       "Unlimited Websites",
       "Multiple Branches",
@@ -141,6 +283,7 @@ export const WEBSITE_ADDONS: WebsiteAddon[] = [
     id: "professional-website",
     name: "Professional Website",
     priceLabel: "Starting from ₹15,000",
+    priceInr: 15000,
     features: [
       "Custom Design",
       "SEO",
@@ -158,6 +301,7 @@ export const WEBSITE_ADDONS: WebsiteAddon[] = [
     id: "premium-website",
     name: "Premium Website",
     priceLabel: "Starting from ₹35,000",
+    priceInr: 35000,
     highlighted: true,
     features: [
       "Everything above",
@@ -177,6 +321,7 @@ export const WEBSITE_ADDONS: WebsiteAddon[] = [
     id: "custom-enterprise-website",
     name: "Custom Enterprise Website",
     priceLabel: "Custom Quote",
+    priceInr: null,
     features: [
       "Unlimited Pages",
       "Advanced Integrations",
@@ -252,7 +397,7 @@ export const PRICING_FAQS = [
   {
     question: "Do you offer a free trial?",
     answer:
-      "Yes. Start with a free trial to explore Brosavo Real Estate CRM, website tools, and core workflows before you commit.",
+      "Yes. Start with a 14-day free trial to explore Brosavo Real Estate CRM, website tools, and core workflows before you commit. No credit card required.",
   },
   {
     question: "Can I use my own domain?",

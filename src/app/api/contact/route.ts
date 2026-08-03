@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import {
   buildContactEmailHtml,
+  buildContactEmailText,
   contactFormSchema,
 } from "@/lib/contact";
 
@@ -41,19 +42,9 @@ export async function POST(request: Request) {
       from: `Brosavo <${fromEmail}>`,
       to: [toEmail],
       replyTo: data.email,
-      subject: `New contact from ${data.name}${data.company ? ` (${data.company})` : ""}`,
+      subject: `Demo request from ${data.name}${data.city ? ` · ${data.city}` : ""}${data.interest ? ` · ${data.interest}` : ""}`,
       html: buildContactEmailHtml(data),
-      text: [
-        `Name: ${data.name}`,
-        `Email: ${data.email}`,
-        `Company: ${data.company || "—"}`,
-        `Plan: ${data.plan || "—"}`,
-        `Intent: ${data.intent || "—"}`,
-        `Addon: ${data.addon || "—"}`,
-        "",
-        "Message:",
-        data.message,
-      ].join("\n"),
+      text: buildContactEmailText(data),
     });
 
     if (error) {

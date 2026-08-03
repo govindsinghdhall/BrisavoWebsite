@@ -4,10 +4,14 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { useCurrency } from "@/hooks/useCurrency";
+import { formatPrice } from "@/lib/currency";
 import { WEBSITE_ADDONS } from "@/lib/pricing";
 import { cn } from "@/lib/utils";
 
 export function WebsiteAddons() {
+  const { currency } = useCurrency();
+
   return (
     <section id="addons" className="relative scroll-mt-36 section-padding !py-16 md:!py-20">
       <div className="pointer-events-none absolute inset-0">
@@ -16,59 +20,72 @@ export function WebsiteAddons() {
       <div className="container-wide relative">
         <SectionHeader
           label="Website Add-ons"
-          title="Need More?"
-          description="Pair Brosavo CRM with a high-converting real estate website — from launch-ready to luxury enterprise builds."
+          title="Professional Websites"
+          description="Choose the perfect website package for your real estate business — from launch-ready to luxury enterprise builds."
           align="center"
           compact
         />
 
         <div className="grid gap-6 lg:grid-cols-3">
-          {WEBSITE_ADDONS.map((addon, index) => (
-            <motion.article
-              key={addon.id}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
-              className={cn(
-                "group flex h-full flex-col rounded-[1.75rem] border p-6 sm:p-8 transition-transform duration-300 hover:-translate-y-1",
-                addon.highlighted
-                  ? "border-accent-violet/35 bg-linear-to-b from-accent-violet/10 to-surface"
-                  : "border-border bg-surface/70"
-              )}
-            >
-              <h3 className="text-xl font-bold tracking-tight text-foreground">
-                {addon.name}
-              </h3>
-              <p className="mt-3 text-2xl font-semibold text-accent-blue">
-                {addon.priceLabel}
-              </p>
+          {WEBSITE_ADDONS.map((addon, index) => {
+            const priceLabel =
+              addon.priceInr != null
+                ? `Starting from ${formatPrice(addon.priceInr, currency)}`
+                : addon.priceLabel;
 
-              <ul className="mt-6 flex-1 space-y-3">
-                {addon.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="flex items-start gap-2.5 text-sm leading-6 text-foreground/80"
+            return (
+              <motion.article
+                key={addon.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className={cn(
+                  "group flex h-full flex-col rounded-[1.75rem] border p-6 sm:p-8 transition-transform duration-300 hover:-translate-y-1",
+                  addon.highlighted
+                    ? "border-accent-violet/35 bg-linear-to-b from-accent-violet/10 to-surface"
+                    : "border-border bg-surface/70"
+                )}
+              >
+                {addon.highlighted ? (
+                  <div className="mb-4 inline-flex w-fit rounded-full bg-linear-to-r from-accent-blue to-accent-violet px-3 py-1 text-[11px] font-semibold text-white">
+                    Most Popular
+                  </div>
+                ) : null}
+
+                <h3 className="text-xl font-bold tracking-tight text-foreground">
+                  {addon.name}
+                </h3>
+                <p className="mt-3 text-2xl font-semibold text-accent-blue">
+                  {priceLabel}
+                </p>
+
+                <ul className="mt-6 flex-1 space-y-3">
+                  {addon.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-start gap-2.5 text-sm leading-6 text-foreground/80"
+                    >
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent-blue/10 text-accent-blue">
+                        <Check className="h-3 w-3" strokeWidth={3} />
+                      </span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-8">
+                  <MagneticButton
+                    href={addon.ctaHref}
+                    variant={addon.highlighted ? "primary" : "secondary"}
+                    className="w-full !rounded-2xl"
                   >
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent-blue/10 text-accent-blue">
-                      <Check className="h-3 w-3" strokeWidth={3} />
-                    </span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-8">
-                <MagneticButton
-                  href={addon.ctaHref}
-                  variant={addon.highlighted ? "primary" : "secondary"}
-                  className="w-full !rounded-2xl"
-                >
-                  {addon.ctaLabel}
-                </MagneticButton>
-              </div>
-            </motion.article>
-          ))}
+                    {addon.ctaLabel}
+                  </MagneticButton>
+                </div>
+              </motion.article>
+            );
+          })}
         </div>
       </div>
     </section>

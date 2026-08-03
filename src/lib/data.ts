@@ -8,6 +8,11 @@ export const CONTACT = {
     { label: "Canada", number: "+1 236 818 4654", href: "tel:+12368184654", flag: "🇨🇦" },
     { label: "India", number: "+91 99991 07733", href: "tel:+919999107733", flag: "🇮🇳" },
   ],
+  whatsapp: {
+    label: "WhatsApp",
+    number: "+91 99991 07733",
+    href: "https://wa.me/919999107733?text=Hi%20Brosavo%2C%20I%20just%20submitted%20the%20contact%20form%20and%20would%20like%20to%20connect.",
+  },
   offices: "Vancouver 🇨🇦 · Gurugram 🇮🇳",
 } as const;
 
