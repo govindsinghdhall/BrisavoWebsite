@@ -1,38 +1,81 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { BlurReveal } from "@/components/animations/TextReveal";
-import { Send, Mail, MapPin, Phone, CheckCircle } from "lucide-react";
+import { Send, Mail, MapPin, Phone, CheckCircle, Loader2 } from "lucide-react";
 import { CONTACT } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 export function Contact({ showHeader = true }: { showHeader?: boolean }) {
+  const searchParams = useSearchParams();
   const [formState, setFormState] = useState({
     name: "",
     email: "",
     company: "",
     message: "",
+    plan: "",
+    intent: "",
+    addon: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [focused, setFocused] = useState<string | null>(null);
+
+  useEffect(() => {
+    setFormState((prev) => ({
+      ...prev,
+      plan: searchParams.get("plan") || prev.plan,
+      intent: searchParams.get("intent") || prev.intent,
+      addon: searchParams.get("addon") || prev.addon,
+    }));
+  }, [searchParams]);
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
     if (!formState.name.trim()) newErrors.name = "Name is required";
     if (!formState.email.trim()) newErrors.email = "Email is required";
-    else if (!/\S+@\S+\.\S+/.test(formState.email)) newErrors.email = "Invalid email";
+    else if (!/\S+@\S+\.\S+/.test(formState.email))
+      newErrors.email = "Invalid email";
     if (!formState.message.trim()) newErrors.message = "Message is required";
+    else if (formState.message.trim().length < 10)
+      newErrors.message = "Please share a bit more detail";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validate()) setSubmitted(true);
+    if (submitting) return;
+    setSubmitError(null);
+    if (!validate()) return;
+
+    setSubmitting(true);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+
+      const data = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        setSubmitError(data.error || "Failed to send message. Please try again.");
+        return;
+      }
+
+      setSubmitted(true);
+    } catch {
+      setSubmitError("Network error. Please check your connection and try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const fields = [
@@ -121,6 +164,15 @@ export function Contact({ showHeader = true }: { showHeader?: boolean }) {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="glass rounded-2xl p-6 md:p-8 border border-border space-y-5">
+                  {(formState.plan || formState.intent || formState.addon) && (
+                    <div className="rounded-xl border border-accent-blue/20 bg-accent-blue/8 px-4 py-3 text-sm text-foreground/80">
+                      Enquiry context:{" "}
+                      {[formState.intent, formState.plan, formState.addon]
+                        .filter(Boolean)
+                        .join(" · ")}
+                    </div>
+                  )}
+
                   {fields.map((field) => (
                     <div key={field.id}>
                       <label htmlFor={field.id} className="text-xs font-mono uppercase tracking-wider text-muted mb-2 block">
@@ -137,6 +189,7 @@ export function Contact({ showHeader = true }: { showHeader?: boolean }) {
                           }
                           onFocus={() => setFocused(field.id)}
                           onBlur={() => setFocused(null)}
+                          disabled={submitting}
                           className={cn(
                             "w-full bg-surface border rounded-xl px-4 py-3 text-sm outline-none transition-all duration-300",
                             focused === field.id
@@ -170,6 +223,7 @@ export function Contact({ showHeader = true }: { showHeader?: boolean }) {
                       onChange={(e) => setFormState((p) => ({ ...p, message: e.target.value }))}
                       onFocus={() => setFocused("message")}
                       onBlur={() => setFocused(null)}
+                      disabled={submitting}
                       className={cn(
                         "w-full bg-surface border rounded-xl px-4 py-3 text-sm outline-none transition-all duration-300 resize-none",
                         focused === "message"
@@ -189,9 +243,29 @@ export function Contact({ showHeader = true }: { showHeader?: boolean }) {
                     )}
                   </div>
 
-                  <MagneticButton type="submit" variant="primary" className="w-full !rounded-xl">
-                    <Send className="w-4 h-4" />
-                    Transmit Message
+                  {submitError ? (
+                    <p className="rounded-xl border border-red-500/30 bg-red-500/5 px-4 py-3 text-sm text-red-400">
+                      {submitError}
+                    </p>
+                  ) : null}
+
+                  <MagneticButton
+                    type="submit"
+                    variant="primary"
+                    className="w-full !rounded-xl"
+                    disabled={submitting}
+                  >
+                    {submitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        Transmit Message
+                      </>
+                    )}
                   </MagneticButton>
                 </form>
               )}

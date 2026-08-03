@@ -15,6 +15,7 @@ export const NAV_LINKS = [
   { label: "Services", href: "/services" },
   { label: "Technology", href: "/technology" },
   { label: "Products", href: "/products" },
+  { label: "Pricing", href: "/pricing" },
   { label: "Blog", href: "/blog" },
   { label: "Why Us", href: "/why-us" },
   { label: "Team", href: "/team" },
@@ -40,6 +41,7 @@ export const FOOTER_LINKS = {
     { label: "Property Management", href: "/products#real-estate-crm" },
     { label: "Lead Management", href: "/products#real-estate-crm" },
     { label: "WhatsApp Automation", href: "/products#whatsapp" },
+    { label: "Pricing", href: "/pricing" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy" },
@@ -424,6 +426,7 @@ export const HOME_LINKS = [
   { label: "Services", href: "/services", description: "12 engineering disciplines", icon: "layers" },
   { label: "Technology", href: "/technology", description: "65+ production technologies", icon: "cpu" },
   { label: "Products", href: "/products", description: "Real Estate CRM & platforms", icon: "box" },
+  { label: "Pricing", href: "/pricing", description: "Plans for agents & agencies", icon: "star" },
   { label: "Global", href: "/global", description: "Canada × India network", icon: "globe" },
   { label: "Why Us", href: "/why-us", description: "What sets us apart", icon: "star" },
   { label: "Team", href: "/team", description: "Meet our leaders", icon: "users" },

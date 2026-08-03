@@ -12,6 +12,7 @@ interface MagneticButtonProps {
   href?: string;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
 export function MagneticButton({
@@ -21,11 +22,13 @@ export function MagneticButton({
   href,
   onClick,
   type = "button",
+  disabled = false,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLButtonElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleMouse = (e: React.MouseEvent) => {
+    if (disabled) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -48,6 +51,7 @@ export function MagneticButton({
     <motion.button
       type={href ? undefined : type}
       ref={ref}
+      disabled={disabled}
       onMouseMove={handleMouse}
       onMouseLeave={reset}
       animate={{ x: position.x, y: position.y }}
@@ -55,6 +59,7 @@ export function MagneticButton({
       className={cn(
         "relative inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-sm font-medium transition-all duration-300 cursor-pointer",
         variants[variant],
+        disabled && "cursor-not-allowed opacity-60",
         className
       )}
       onClick={onClick}
@@ -74,15 +79,19 @@ export function MagneticButton({
 
   if (href) {
     const isExternal = href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
+    const wrapperClass = cn(
+      "inline-block",
+      className?.includes("w-full") && "block w-full"
+    );
     if (isExternal) {
       return (
-        <a href={href} className="inline-block">
+        <a href={href} className={wrapperClass}>
           {content}
         </a>
       );
     }
     return (
-      <Link href={href} className="inline-block">
+      <Link href={href} className={wrapperClass}>
         {content}
       </Link>
     );
