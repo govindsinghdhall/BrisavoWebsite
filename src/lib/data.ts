@@ -2,7 +2,7 @@ export const CONTACT = {
   email: "hellobrosavo@gmail.com",
   instagram: {
     handle: "hellobrosavo",
-    href: "https://www.instagram.com/hellobrosavo/",
+    href: "https://www.instagram.com/brosavo/",
   },
   phones: [
     { label: "Canada", number: "+1 236 818 4654", href: "tel:+12368184654", flag: "🇨🇦" },
